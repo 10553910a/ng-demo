@@ -1,0 +1,186 @@
+<div class="container  mt-4 ml-1" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+    <div class="row">       
+        <div class="input-group col-12 col-md-3 mt-1">                      
+            <div class=" input-group-append">   
+                <h4 class="text-center  text-warning mt-3">Editar Cliente</h4>               				  				
+            </div>	
+        </div> 
+    </div>
+</div>
+<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-1"> 
+    <div class="row mt-1 ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Tipo Documento</label>
+            <select class="form-control"
+                name="tdocumento"
+                id="idtdocumento"
+                required="required"
+                minlength="2"
+                [(ngModel)]="clientes.tipo_documento" 
+                onchange="this.classList.add('option-selected')"> <!-- Agrega la clase 'option-selected' al select -->                
+                <option *ngFor="let tipoDoc of tipoDoc" style="font-size: 14px;" [value]="tipoDoc.tipo_documento">{{ tipoDoc.tipo_documento }}</option>
+            </select>
+            <span class="invalid" id="requiredMessage"></span> <!-- Agrega un ID al elemento span -->
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Numero de Documento</label>
+            <input type="number"
+            class="form-control"
+            [(ngModel)]="clientes.numero_documento"
+             placeholder=""
+             name="ndoc"
+             required
+             minlength="6"
+             maxlength="10"/>
+             <span class="invalid">*Requerido</span> 
+        </div>        
+    </div>
+    <div class="row ml-2 mr-2">      
+        <div class="col-md-6">
+            <label class="text-primary">Razon Social / Nombres y Apellidos</label>
+            <input type="text"
+            class="form-control"
+            id="rsocial"
+            [(ngModel)]="clientes.razon_social"
+            name="rsocial"
+            required minlength="3"
+            maxlength="40"
+            placeholder=""
+            #rsocial="ngModel" />
+            <span class="invalid">*Requerido</span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="text-primary">Tipo contribuyente</label>
+            <select class="form-control" name="contrib" id="idContrib" [(ngModel)]="clientes.tipo_contribuyente">
+                <option *ngFor="let tipoCont of tipoContrib" style="font-size: 12px;" [value]=" tipoCont.tipo_contribuyente">{{ tipoCont.tipo_contribuyente }}</option>
+            </select>
+        </div>
+    </div>   
+    <div class="row ml-2 mr-2">
+        <div class="form-group col-md-6">
+            <label class="text-primary">Direccion</label>
+            <input type="text" class="form-control" id="direccion" [(ngModel)]="clientes.direccion" name="direccion" minlength="4" maxlength="40" placeholder="" #direccion="ngModel" />
+            <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                <div *ngIf="direccion.errors?.['required']">
+                    Ingrese la direccion por favor
+                </div>
+                <div *ngIf="direccion.errors?.['minlength']">
+                    la direccion debe tener minimo 4 caracteres
+                </div>
+                <div *ngIf="direccion.errors?.['maxlength']">
+                    la direccion debe tener maximo 40 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="text-primary">Mail</label>
+            <input
+                type="text"
+                class="form-control"
+                id="mail"
+                [(ngModel)]="clientes.mail"
+                name="mail"
+                pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                minlength="8"
+                maxlength="50"
+                placeholder=""
+                #mail="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                <div *ngIf="mail.errors?.['pattern']">
+                   <!-- Formato : mm@gmail.com-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-2 mr-2">
+        <div class="form-group col-md-3">
+            <label class="text-primary">Cuenta Corriente</label>
+            <select 
+            class="form-control"
+            name="egreArt"
+            id="egreArt"
+            [(ngModel)]="clientes.cuenta_corriente">
+                <option selected="selected" style="color: slategray;">Seleccione...</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>               
+            </select> <!-- Aquí se cierra correctamente el select -->
+        </div>
+        <div class="form-group col-md-3">
+            <label class="text-primary">Limite</label>
+            <input 
+            type="text"
+            class="form-control"
+            id="nota"
+            [(ngModel)]="clientes.monto_maximo"
+            name="nota"
+            minlength="0"
+            maxlength="100"
+            placeholder="" #nota="ngModel" />
+            <div class="alert alert-danger" *ngIf="nota.invalid && (nota.dirty || nota.touched)">
+                <div *ngIf="nota.errors?.['maxlength']">
+                    Nota debe tener maximo 100 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="text-primary">Telefono</label>
+            <input type="text"
+            class="form-control"
+            id="telefono"
+            [(ngModel)]="clientes.telefono"
+            name="telefono"
+            minlength="8"
+            maxlength="15"
+            placeholder=""
+            #telefono="ngModel" />
+            <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                <div *ngIf="telefono.errors?.['minlength']">
+                    Telefono debe tener minimo 8 caracteres
+                </div>
+                <div *ngIf="telefono.errors?.['maxlength']">
+                    Telefono debe tener maximo 15 caracteres
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="row ml-2 mr-2">
+        <div class="form-group col-md-3">
+            <label class="text-primary">Limites de Dias</label>
+            <input type="text" class="form-control" id="nota" [(ngModel)]="clientes.limites_dias" name="nota" minlength="0" maxlength="100" placeholder="" #nota="ngModel" />
+            <div class="alert alert-danger" *ngIf="nota.invalid && (nota.dirty || nota.touched)">
+                <div *ngIf="nota.errors?.['maxlength']">
+                    Nota debe tener maximo 100 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label class="text-primary">Activo/No Activo</label>
+            <select class="form-control"
+            name="egreArt"
+            id="egreArt"
+            [(ngModel)]="clientes.status">
+                <option selected="selected" style="color: slategray;">Seleccione...</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>               
+            </select> <!-- Aquí se cierra correctamente el select -->
+        </div>
+        <div class="form-group col-md-6">
+            <label class="text-primary">Nota</label>
+            <input type="text" class="form-control" id="nota" [(ngModel)]="clientes.nota" name="nota" minlength="0" maxlength="100" placeholder="" #nota="ngModel" />
+            <div class="alert alert-danger" *ngIf="nota.invalid && (nota.dirty || nota.touched)">
+                <div *ngIf="nota.errors?.['maxlength']">
+                    Nota debe tener maximo 100 caracteres
+                </div>
+            </div>
+        </div>
+    </div>       
+        <div class="container mt-5 border-top border-primary">
+            <div class="mb-5 mt-5" align="center">
+                <button type="submit" class="btn btn-primary btn-sm mr-5" [disabled]="!clienteForm.form.valid" style="width: 120px; height: 40px; font-size: 14px;">Guardar</button>
+                <button class="btn btn-danger btn-sm" type="button" (click)="irAlaListaClientes()" style="width: 120px; height: 40px; font-size: 14px;">Salir</button>
+
+            </div> 
+        </div>           
+</form>
+    

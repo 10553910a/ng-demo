@@ -30,7 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css"
+             
             ],
             "scripts": []
           },
@@ -94,6 +97,7 @@
             ],
             "styles": [
               "src/styles.sass"
+             
             ],
             "scripts": []
           }

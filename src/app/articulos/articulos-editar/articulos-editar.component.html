@@ -1,0 +1,122 @@
+<h5 class="text-center mt-5">Editar del Articulo</h5>
+<div class="form novalidate border border-primary mt-5">
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Id Articulo</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.idArticulo"           
+            readonly >
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Descripcion</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.descripcion">
+       </div>             
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Presentacion</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.presentacion">
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Codigo</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.codigo">
+           
+       </div>             
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Codigo de Barra</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.barra">
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Marca</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.idMarca">
+        </div>
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Proveedor</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.idProveedor">
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Rubro</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.idRubro">
+        </div>
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Costo</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.precioCompra">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Margen de utilidad</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.margen">
+        </div>        
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div div class="col-md-6">
+            <label class="text-primary">Precio</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.precioVenta">
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Precio Oferta</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.precioOferta">
+        </div>
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Descuento %</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.porcentajeDescuento">
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Precio Oferta</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.precioOferta">
+        </div>
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Punto de pedido</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.puntoPedido">
+        </div>
+        <div div class="col-md-6">
+            <label class="text-primary">Vigencia Oferta</label>
+            <input class="form-control"
+            type="text"
+            [(ngModel)]="articulos.iva">
+        </div>
+    </div>
+    <div class="col-md-12 text-center mt-5">
+        <button class="btn btn-primary mb-5 mr-2" type="button" (click)="onSubmit()">Retornar a la lista de artículos</button>
+        <button class="btn btn-primary mb-5 ml-2" type="button" (click)="actualizarArticulo()">Guardar Cambios</button>
+    </div>
+    
+</div>

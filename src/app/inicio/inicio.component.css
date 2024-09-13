@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Cambia height: 100% a height: 100vh */
+}
+
+.text-center {
+  text-align: center;
+  background: rgb(197, 197, 244);
+}
+
+.center-img {
+  display: block;
+  margin: -10px auto 10px auto; /* Ajusta el valor negativo del margen superior */
+}
+
+
+
+
+
+

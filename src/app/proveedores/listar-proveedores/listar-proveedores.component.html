@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3 mb-2">                    
+            <button (click)="registrarProveedores()"class="btn btn-sm btn-outline-warning text-dark">Registrar Proveedores</button>
+        </div> 
+        <div class="col-md-6"></div>
+        <div class="col-md-3 d-flex justify-content-between mb-2">
+            <input type="text" id="nombreCliente" class="form-control slim-input" placeholder="Nombre del proveedor" [(ngModel)]="busqueda" (keydown.enter)="buscarProveedor()" />
+            <!--busqueda por pesionar enter-->
+            <button class="btn btn-sm btn-outline-warning text-dark" type="button" (click)="buscarProveedor()">
+                <span class="d-flex align-items-center">Buscar</span>
+            </button>
+        </div>
+        
+        
+        <div class=" card-body col-md-12" style="background-color:rgb(218, 250, 218); overflow: hidden;  ">
+            <table class="table small table-striped">
+                <thead class="table-dark text-center">
+                <tr>    
+                    <th>Razon Social</th>
+                    <th>cuit</th>
+                    <th>Telefono</th>     
+                    <th>estado</th>                                                                                          
+                    <th>Accion</th>
+                    <th>Accion</th>
+                    <th>Accion</th>
+                </tr>
+                </thead>
+                <tbody class="text-center" >   
+                    <tr *ngFor= "let proveedor of proveedores | slice: ( currentPage-1) * itemsPerPage : currentPage *  itemsPerPage">       
+                        <td>{{proveedor.razonSocial}}</td> 
+                       <td>{{proveedor.cuit}}</td>
+                       <td>{{proveedor.telefono}}</td>
+                       <td>{{proveedor.estado}}</td>                                                                            
+                        <td>
+                            <button (click)="actualizarProveedor(proveedor.id_proveedor)" class="btn btn-sm btn-outline-warning text-dark ">Editar</button>
+                        </td>
+                        <td>
+                          <button (click)="eliminarProveedor(proveedor.id_proveedor)" class=" btn btn-sm btn-outline-warning text-dark ">Eliminar</button>
+                        </td>
+                       <td>
+                            <button (click)="verDetalles(proveedor.id_proveedor)" class=" btn btn-sm btn-outline-warning text-dark ">Detalles</button>
+                       </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <button class="page-link" (click)="paginaAnterior()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </button>
+                    </li>
+                    <li class="page-item" *ngFor="let page of getPaginas() | slice:(currentPage-1)-5:(currentPage-1)+5" [class.active]="currentPage === page">
+                        <button class="page-link" (click)="cambiarPagina(page)">{{ page }}</button>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === getTotalPaginas()">
+                        <button class="page-link" (click)="paginaSiguiente()" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+  
+    </div>
+   
+</div>

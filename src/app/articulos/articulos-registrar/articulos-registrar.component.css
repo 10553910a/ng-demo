@@ -1,0 +1,16 @@
+input:invalid{
+    border: 1px solid #92cc00; 
+}
+input:valid+.invalid{
+visibility: hidden;
+}
+select{
+    border: 1px solid #cc0000;
+}
+select:valid {
+    border-color:  #cadde8; /* Restablece el color del borde cuando el campo select es válido */
+}
+select.option-selected + span#requiredMessage {
+    display: none; /* Oculta el mensaje "Requerido" cuando se selecciona una opción */
+   
+}

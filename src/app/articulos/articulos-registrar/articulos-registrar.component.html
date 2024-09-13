@@ -1,0 +1,205 @@
+<h4 class="text-center mt-5">Registrar articulos</h4>
+
+<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-5" style="background-color: #daf4da">
+    <div class="row mt-5 ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Descripcion</label>
+            <input class="form-control"
+            type="text"
+            name="descripcion"
+            required="required"
+            minlength="3"
+            maxlength="50"
+            [(ngModel)]="articulos.descripcion"
+            (keypress)="onEnter($event, presentInput)"/>
+            <span class="invalid">*Requerido</span>
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Presentacion</label>
+            <input #presentInput
+            class="form-control"
+            type="text"
+            name="present"
+            required="required"
+            minlength="3"
+            maxlength="50"
+            [(ngModel)]="articulos.presentacion"
+            (keydown.enter)="onEnterPress2()"/>
+            <span class="invalid">*Requerido</span>
+        </div>
+    </div>    
+    <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-3">
+            <label class="text-primary">Unidad de Venta</label>
+            <select #unidadSelect
+            class="form-control"
+            type="number"
+            name="unidad"
+            required="required"           
+            [(ngModel)]="articulos.unidadVenta"         
+            (change)="onUnidadSelectChange()">
+            <option *ngFor="let unidad of unidad" style="font-size: 12px;" [value]="unidad.idUnidad">{{ unidad.nombre }}</option>
+            </select>
+            <span class="invalid">*Requerido</span>
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Codigo Articulo</label>
+            <input #codigoInput
+              class="form-control"
+              type="text"
+              name="codigo"
+              required="required"
+              minlength="7"
+              maxlength="7"
+              [(ngModel)]="articulos.codigo"
+              (ngModelChange)="formatCodigo($event)"
+              (keypress)="onEnter($event, barraInput)"/>
+            <span class="invalid">*Requerido</span>
+          </div>
+          
+        <div class="col-md-3">
+            <label class="text-primary">Codigo de Barra</label>
+            <input #barraInput
+            class="form-control"
+            type="number"
+            name="barra"
+            required="required"
+            minlength="3"
+            maxlength="14"
+            [(ngModel)]="articulos.barra"
+            (keydown.enter)="onEnterPress()"/>
+            <span class="invalid">*Requerido</span>
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Marca</label>
+            <select #marcasSelect
+            class="form-control"
+            type="number"
+            name="marca"
+            [(ngModel)]="articulos.idMarca"            
+            (change)="onMarcaSelectChange()">
+            <option *ngFor="let marca of marcas" style="font-size: 12px;" [value]="marca.idMarca">{{ marca.nombre }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Proveedor</label>
+            <select #proveedorSelect
+            class="form-control"
+            type="number"
+            name="proveedor"
+            [(ngModel)]="articulos.idProveedor"
+            (change)="onProveedorSelectChange()">
+            <option *ngFor="let proveedor of proveedores" style="font-size: 12px;" [value]=" proveedor.id_proveedor">{{ proveedor.razonSocial }}</option>
+        </select>
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Rubro</label>
+            <select #rubroSelect
+            class="form-control"
+            type="number"
+            name="rubro"
+            [(ngModel)]="articulos.idRubro"
+            (change)="onRubroSelectChange()">
+            <option *ngFor="let rubro of rubros" style="font-size: 12px;" [value]=" rubro.idRubro">{{ rubro.nombre }}</option>
+        </select>
+        </div>
+      
+    </div>
+    <div class="row mt-2 ml-2 mr-2">      
+        <div class="col-md-3">
+            <label class="text-primary">Costo</label>
+            <input #precioInput
+            class="form-control"
+            type="number"
+            name="pcompra"
+            [(ngModel)]="articulos.precioCompra"
+            (keypress)="onEnter($event, margenInput)" />
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Margen de utilidad</label>
+            <input #margenInput
+            class="form-control"
+            type="number"
+            name="margen"
+            (keyup)="calcularMargen()"
+            [(ngModel)]="articulos.margen"           
+            (keypress)="onEnter($event, precioSinIvaInput)"
+            />
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Precio</label>
+            <input #precioSinIvaInput
+            class="form-control"
+            type="number"
+            name="pSinIva"
+            (keyup)="calcularPorcentajeUtilidad()"
+            [(ngModel)]="articulos.precioVenta"
+            (keypress)="onEnter($event, IvaInput)"
+           />
+        </div> 
+        <div class="col-md-3">
+            <label class="text-primary">Iva</label>
+            <input #IvaInput
+            class="form-control"            
+            type="number" 
+            readonly           
+            name="iva"
+            [(ngModel)]="articulos.iva"
+            (keyup)="calcularPrecioConIva()"
+            (keypress)="onEnter($event, precioVentaInput)" />
+        </div>
+    </div>   
+    <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-3">
+            <label class="text-primary">Precio Venta</label>
+            <input #precioVentaInput
+            class="form-control"
+            type="number"
+            name="pventa"
+            required="required"
+            [(ngModel)]="articulos.precioVentaIva"           
+            (keypress)="onEnter($event, porcentajeInput)"/>
+            <span class="invalid">*Requerido</span>
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Porcentaje Descuento</label>
+            <input #porcentajeInput
+            class="form-control"
+            type="number"
+            name="descuento"
+            (keyup)="calcularPorcentajeDescuento()"
+            [(ngModel)]="articulos.porcentajeDescuento"
+            (keypress)="onEnter($event, pventaOfertaInput)" />
+        </div>            
+        <div class="col-md-3">
+            <label class="text-primary">Precio oferta</label>
+            <input #pventaOfertaInput
+            class="form-control"
+            type="number"
+            name="oferta"
+            [(ngModel)]="articulos.precioOferta"
+            (keypress)="onEnter($event, puntoInput)" />
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Punto de pedido</label>
+            <input #puntoInput
+            class="form-control"
+            type="number"
+            name="pedido"
+            [(ngModel)]="articulos.puntoPedido"
+             />
+        </div>
+    </div>          
+    <br />
+    <div class="container mt-5 border-top border-primary">
+        <div class="mt-5 mb-5" align="center">
+            <button type="submit" style="background-color: #637ef3; color: white; width: 80px; height: 30px;" class="btn btn-success btn-sm mr-5" [disabled]="!clienteForm.form.valid">Guardar</button>
+            <button class="btn btn-primary btn-sm  mr-5" type="button" style="background-color: red; color: white; width: 80px; height: 30px;" (click)="irAlaListaArticulos()">Salir</button>
+            <button class="btn btn-primary btn-sm" type="button" style="background-color: rgb(71, 77, 43); color: white; width: 80px; height: 30px;" (click)="limpiar()">Limpiar</button>
+        </div>
+    </div>
+</form>
+
+

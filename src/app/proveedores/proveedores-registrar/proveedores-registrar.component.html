@@ -1,0 +1,165 @@
+
+<h4 class="text-center mt-5">Registro de Proveedores</h4>      
+<form novalidate (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border border-primary rounded mt-5" style="background-color: #daf4da">
+        <div class="row mt-5 ml-2 mr-2">  
+            <div class="col-md-6">
+                <label class="text-primary">Razon Social</label>
+                <input type="text"                
+                class="form-control" 
+                id="rsocial"
+                [(ngModel)]="proveedor.razonSocial"
+                name="rsocial"
+                required="required"
+                minlength="3"
+                maxlength="40"
+                placeholder=""
+                #rsocial = "ngModel"
+                (keypress)="onEnter($event, contactoInput)">  
+                <span class="invalid">*Requerido</span>                                  
+            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Persona de contacto</label>
+                <input #contactoInput 
+                type="text"                
+                class="form-control"
+                id="contacto" 
+                [(ngModel)]="proveedor.contacto"
+                name="contacto"
+                required="required"
+                minlength="3"
+                maxlength="40"
+                placeholder=""            
+                #cont = "ngModel"
+                (keypress)="onEnter($event, direccionInput)"> 
+                <span class="invalid">*Requerido</span>        
+            </div>
+        </div> 
+        <div class="row ml-2 mr-2 mt-2">
+            <div class="col-md-6">
+                <label class="text-primary">Direccion</label>
+                <input #direccionInput 
+                type="text"                
+                class="form-control" 
+                id="direccion" 
+                [(ngModel)]="proveedor.direccion"
+                name="direccion"
+                required="required"
+                minlength="1"
+                maxlength="40"
+                placeholder=""
+                #direc = "ngModel"
+                (keydown.enter)="onEnter($event, localidadInput)">
+                <span class="invalid">*Requerido</span> 
+            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Localidad</label>
+                <input #localidadInput 
+                type="text"                 
+                class="form-control" 
+                id="localidad" 
+                [(ngModel)]="proveedor.localidad"
+                name="localidad"                
+                minlength="3"
+                maxlength="20"
+                placeholder=""
+                #local="ngModel"                
+                (keydown.enter)="onEnterPress()">              
+            </div>                          
+        </div>   
+        <div class="row ml-2 mr-2 mt-2">
+            <div class="col-md-6">
+                <label class="text-primary">Provincia</label> 
+                <select #provinciaSelect
+                class="form-control"
+                name="provincia"
+                id="idprovincia"
+                [(ngModel)]="proveedor.provincia"
+                (change)="onProvinciaSelectChange()">
+                <option *ngFor="let provincia of provincias" style="font-size: 12px;" [value]="provincia.provincia">{{ provincia.provincia }}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Telefono</label>
+                <input #telefonoInput 
+                type="text"               
+                class="form-control" 
+                id="telefono" 
+                [(ngModel)]="proveedor.telefono"
+                name="telefono"            
+                minlength="7"
+                maxlength="15"
+                placeholder=""
+                #telef = "ngModel"
+                (keydown.enter)="onEnterPress2()">                  
+            </div>                                   
+        </div> 
+        <div class="row ml-2 mr-2 mt-2">    
+            <div class="col-md-6">
+                <label class="text-primary">Tipo contribuyente</label>
+                <select #contribuyenteSelect
+                class="form-control"
+                name="contrib"
+                id="idContrib"
+                required="required"
+                [(ngModel)]="proveedor.id_tipo_cont"
+                (change)="onContribuyenteSelectChange()"
+                onchange="this.classList.add('option-selected')"> <!-- Agrega la clase 'option-selected' al select -->                 
+                  <option *ngFor="let tipoCont of tipoContrib"  [value]=" tipoCont.id_tipoCont">{{  tipoCont.tipo_contribuyente }}</option>                  
+                </select> 
+                <span class="invalid" id="requiredMessage">*Requerido</span> <!-- Agrega un ID al elemento span -->                                       
+            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Cuit</label>
+                <input #cuitInput
+                type="text"               
+                class="form-control" 
+                id="idcuit" 
+                [(ngModel)]="proveedor.cuit"
+                name="Ncuit" 
+                required="required"           
+                minlength="2"
+                maxlength="20"
+                placeholder=""
+                #cuit = "ngModel"
+                (keydown.enter)="onEnterPress3()"> 
+                 <span class="invalid">*Requerido</span>              
+            </div>         
+        </div> 
+        <div class="row ml-2 mr-2 mt-2 mb-5">
+            <div class="col-md-6">
+                <label for="tipoProveedor" class="text-primary">Tipo de proveedor</label>
+                <select #tipoProveedorSelect
+                class="form-control
+                custom-select"
+                id="tipoProveedor"
+                [(ngModel)]="proveedor.tipoProveedor"
+                (keydown.enter)="onEnterPress4()"                               
+                name="tipoProveedor">
+                    <option value="Contado">Contado</option>
+                    <option value="Credito">Crédito</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="estado" class="text-primary">Status</label>
+                <select #statusSelect
+                class="form-control custom-select"
+                id="status"
+                [(ngModel)]="proveedor.estado"
+                name="status">
+                    <option value="activo">Activo</option>
+                    <option value="desactivo">Desactivo</option>
+                </select>
+            </div>
+        </div>                
+        <div class="row ml-2 mr-2 mt-2">            
+            <div class="col-md-6">                          
+            </div>
+        </div> 
+        <div class="container mt-5 border-top border-primary">
+            <div class="mt-5 mb-5  border border-top" align="center " style="background-color: #daf4da">
+                <button type="submit" style="background-color: rgb(14, 50, 213); color: rgb(176, 168, 168); width: 80px; height: 30px;" class="btn btn-success btn-sm mr-5" [disabled]="!proveedorForm.form.valid">Guardar</button>
+                <button class="btn btn-primary btn-sm" type="button" style="background-color: red; color: white; width: 80px; height: 30px;" (click)=" irAlaListaProveedores()">Salir</button>
+            </div>
+        </div>                                                            
+    </form>
+    

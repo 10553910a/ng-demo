@@ -1,0 +1,63 @@
+<h4 class="text-center mt-5">Detalles del Proveedor</h4>
+<div class="form novalidate border border-primary mt-5">
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Id</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.id_proveedor" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Nombre o Razon Social</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.razonSocial" placeholder="">
+        </div>
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Contacto</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.contacto" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Direccion</label>
+           <input class="form-control" type="text" [(ngModel)]="proveedor.direccion" placeholder="">
+        </div>
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Provincia</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.provincia" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Localidad</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.localidad" placeholder="">
+        </div> 
+    </div>
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Telefono</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.telefono" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Tipo Iva</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.id_tipo_cont" placeholder="">
+        </div>
+    </div> 
+    <div class="row mt-3 form-group ml-2 mr-2">   
+        <div class="col-md-6">
+            <label class="text-primary">Cuit</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.cuit" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Estado</label>
+             <input class="form-control" type="text" [(ngModel)]="proveedor.estado" placeholder="">
+        </div>
+    </div> 
+    <div class="row mt-3 form-group ml-2 mr-2">    
+        <div class="col-md-6">
+            <label class="text-primary">Tipo Proveedor</label>
+            <input class="form-control" type="text" [(ngModel)]="proveedor.tipoProveedor " placeholder="">
+        </div>
+    </div>
+    <div class="text-center mt-5 mb-5">
+        <button class="btn btn-primary" (click)="onSubmit()" type="button">Retornar a la lista de Proveedores</button>
+    </div>
+    
+</div>

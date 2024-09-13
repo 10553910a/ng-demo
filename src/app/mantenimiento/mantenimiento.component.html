@@ -1,0 +1,38 @@
+<h3 class="text-center mt-5 text-warning">Mantenimiento</h3>
+<div class="form novalidate border border-primary mt-5 rounded"  style="background-color: #daf4da; max-width: 800px; margin: 0 auto;">
+    <div class="row ml-2 mr-2 mt-2">
+        <div class="col-md-3 mt-5 mr-0">
+            <label for="mantenimiento" class="text-primary">Unidad de Venta</label>               
+        </div>
+        <div  class="col-md-5 mt-5" >
+            <input class=""
+            type="text"
+            [(ngModel)]="unidades.nombre">
+        </div>
+        <div class="col-md-4 mt-5">
+            <button  class="btn btn-sm" id="RegistrarUnidad" (click)="guargarUnidad()">Registrar</button>
+        </div>
+    </div>
+    <div class="row ml-2 mr-2 mt-2">
+        <div class="col-md-3 mt-5">
+            <label for="mantenimiento" class="text-primary">Marca</label>                
+        </div>
+        <div class="col-md-5 mt-5">
+            <input class="">  
+        </div>
+        <div class="col-md-4 mt-5">
+            <button class="btn btn-sm" id="RegistrarMarca">Registrar</button>
+        </div>
+    </div>
+    <div class="row ml-2 mr-2 mt-2">
+        <div class="col-md-3 mt-5">
+            <label for="mantenimiento" class="text-primary">Rubro</label>                  
+        </div>
+        <div class="col-md-5 mt-5">
+            <input class="">
+        </div>
+        <div class="col-md-4 mt-5 mb-5">
+            <button  class="btn btn-sm" id="RegistrarRubro">Registrar</button>
+        </div>
+    </div>        
+</div>
