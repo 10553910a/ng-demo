@@ -1,53 +1,75 @@
 
-<h5 class="text-center mt-5">Detalles del Cliente</h5>
-<div class="form novalidate border border-primary mt-5">           
-        <div class="row mt-3 form-group ml-2 mr-2">
-            <div class="col-md-6">
-                <label class="text-primary">Id</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.id_cliente" placeholder="">
+<div class="container mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);">
+    <div class="row">
+        <div class="input-group col-12 col-md-3 mt-1">
+            <div class="input-group-append">
+                <h4 class="text-center text-warning mt-3">Detalles del Cliente</h4>
             </div>
-            <div div class="col-md-6">
-                <label class="text-primary">Tipo Documento</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.tipo_documento" placeholder="">
-           </div>             
         </div>
-        <div class="row mt-3 form-group ml-2 mr-2">
-            <div class="col-md-6">
-                <label class="text-primary">Nro. Documento</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.numero_documento" placeholder="">
-            </div>
-            <div div class="col-md-6">
-                <label class="text-primary">Nombre o Razon social</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.razon_social" placeholder="">
-           </div>             
+    </div>
+</div>
+
+<div class="form novalidate border border-primary mt-2">
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Id</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.id_cliente" placeholder="">
         </div>
-        <div class="row mt-3 form-group ml-2 mr-2">
-            <div class="col-md-6">
-                <label class="text-primary">Tipo Contribuyente</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.tipo_contribuyente" placeholder="">
-            </div>
-            <div div class="col-md-6">
-                <label class="text-primary">Mail</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.mail" placeholder="">
-           </div>             
-        </div> 
-        <div class="row mt-3 form-group ml-2 mr-2">
-            <div class="col-md-6">
-                <label class="text-primary">Telefono</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.telefono" placeholder="">
-            </div>
-            <div div class="col-md-6">
-                <label class="text-primary">Direccion</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.direccion" placeholder="">
-           </div>             
-        </div>  
-        <div class="row mt-3 form-group ml-2 mr-2">
-            <div class="col-md-12">
-                <label class="text-primary">Nota</label>
-                <input class="form-control" type="text" [(ngModel)]="cliente.nota" placeholder="">
-            </div>                       
-        </div>                                                     
+        <div class="col-md-6">
+            <label class="text-primary">Tipo Documento</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.tipo_documento" placeholder="">
+        </div>
+    </div>    
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Nro. Documento</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.numero_documento" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Tipo Contribuyente</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.tipo_contribuyente" placeholder="">
+        </div>       
+    </div>    
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Nombre o Razon social</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.razon_social" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Direccion</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.direccion" placeholder="">
+        </div>        
+    </div>
+    
+    <div class="row mt-3 form-group ml-2 mr-2">        
+        <div class="col-md-3">
+            <label class="text-primary">Cta. Corriente</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.cuenta_corriente" placeholder="">
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Limite de Días</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.limites_dias" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label class="text-primary">Telefono</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.telefono" placeholder="">
+        </div>
+    </div>
+    
+    <div class="row mt-3 form-group ml-2 mr-2">
+        <div class="col-md-6">
+            <label class="text-primary">Mail</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.mail" placeholder="">
+        </div>            
+        <div class="col-md-6">
+            <label class="text-primary">Nota</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.nota" placeholder="">
+        </div>
+    </div>
+
     <div class="col-md-12 text-center mt-5">
         <button class="btn btn-primary mb-5" type="button" (click)="onSubmit()">Retornar a la lista de clientes</button>
-    </div>        
+    </div>
 </div>
+
+

@@ -3,7 +3,7 @@ import { Clientes } from '../clientes';
 import { ClienteService } from '../cliente.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-//import * as XLSX from 'xlsx';
+//npm install file-saver --saveimport * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-listar-clientes',
@@ -135,7 +135,7 @@ export class ListarClientesComponent implements OnInit {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.clientes);
     const workbook: XLSX.WorkBook = { Sheets: { 'Clientes': worksheet }, SheetNames: ['Clientes'] };
     XLSX.writeFile(workbook, 'Listado_Clientes.xlsx');
-  }
+  }*/
 
   // exportarPDF() {
   //   const doc = new jsPDF();
@@ -154,7 +154,7 @@ export class ListarClientesComponent implements OnInit {
   //     body: rows,
   //   });
   //   doc.save('Listado_Clientes.pdf');
-  // }*/
+  // }
 
 }
 

@@ -1,18 +1,23 @@
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-md-3 mb-2">                    
-            <button (click)="registrarProveedores()"class="btn btn-sm btn-outline-warning text-dark">Registrar Proveedores</button>
-        </div> 
-        <div class="col-md-6"></div>
-        <div class="col-md-3 d-flex justify-content-between mb-2">
-            <input type="text" id="nombreCliente" class="form-control slim-input" placeholder="Nombre del proveedor" [(ngModel)]="busqueda" (keydown.enter)="buscarProveedor()" />
-            <!--busqueda por pesionar enter-->
-            <button class="btn btn-sm btn-outline-warning text-dark" type="button" (click)="buscarProveedor()">
-                <span class="d-flex align-items-center">Buscar</span>
-            </button>
-        </div>
-        
-        
+    <div class="row mt-5">                       
+        <div class="container  mt-4 ml-0 row "  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+            <div class="col-md-3 mt-2 mb-2">
+                <button (click)="registrarProveedores()" class="btn btn-sm btn-outline-warning text-dark">Registrar Proveedores</button>
+            </div>
+            <div class="col-md-3 mt-2">
+                <button class="btn btn-sm btn-outline-success text-dark" >Exportar a Excel</button>
+            </div>
+            <div class="col-md-3 mt-2">
+                <button class="btn btn-sm btn-outline-danger text-dark">Exportar a PDF</button>
+            </div>
+            <div class="col-md-3 d-flex justify-content-between mb-3 mt-2">
+                <input type="text" id="nombreCliente" class="form-control slim-input" placeholder="Nombre del Proveedor" [(ngModel)]="busqueda" (keydown.enter)="buscarProveedor()" />
+                <!--busqueda por pesionar enter-->
+                <button class="btn btn-sm btn-outline-warning text-dark " type="button" (click)="buscarProveedor()">
+                    <span class="d-flex align-items-center">Buscar</span>
+                </button>
+            </div>              
+        </div>               
         <div class=" card-body col-md-12" style="background-color:rgb(218, 250, 218); overflow: hidden;  ">
             <table class="table small table-striped">
                 <thead class="table-dark text-center">
