@@ -1,4 +1,4 @@
-<div class="container  mt-4 ml-1" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
     <div class="row">       
         <div class="input-group col-12 col-md-3 mt-1">                      
             <div class=" input-group-append">   
@@ -107,7 +107,7 @@
             </select> <!-- Aquí se cierra correctamente el select -->
         </div>
         <div class="form-group col-md-3">
-            <label class="text-primary">Limite</label>
+            <label class="text-primary">Monto Maximo</label>
             <input 
             type="text"
             class="form-control"
@@ -147,7 +147,14 @@
     <div class="row ml-2 mr-2">
         <div class="form-group col-md-3">
             <label class="text-primary">Limites de Dias</label>
-            <input type="text" class="form-control" id="nota" [(ngModel)]="clientes.limites_dias" name="nota" minlength="0" maxlength="100" placeholder="" #nota="ngModel" />
+            <input type="text"
+            class="form-control"
+            id="nota" [(ngModel)]="clientes.limites_dias"
+            name="limite"
+            minlength="10"
+            maxlength="100"
+            placeholder=""
+            #nota="ngModel" />
             <div class="alert alert-danger" *ngIf="nota.invalid && (nota.dirty || nota.touched)">
                 <div *ngIf="nota.errors?.['maxlength']">
                     Nota debe tener maximo 100 caracteres

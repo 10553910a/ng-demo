@@ -1,6 +1,14 @@
 
-<h4 class="text-center mt-5">Registro de Proveedores</h4>      
-<form novalidate (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border border-primary rounded mt-5" style="background-color: #daf4da">
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+    <div class="row">       
+        <div class="input-group col-12 col-md-6 mt-1">                      
+            <div class=" input-group-append">   
+                <h4 class="text-center  text-warning mt-3">Registro de Proveedores</h4>               				  				
+            </div>	
+        </div> 
+    </div>
+</div>      
+<form novalidate (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border border-primary rounded mt-2" >
         <div class="row mt-5 ml-2 mr-2">  
             <div class="col-md-6">
                 <label class="text-primary">Razon Social</label>
@@ -156,9 +164,9 @@
             </div>
         </div> 
         <div class="container mt-5 border-top border-primary">
-            <div class="mt-5 mb-5  border border-top" align="center " style="background-color: #daf4da">
-                <button type="submit" style="background-color: rgb(14, 50, 213); color: rgb(176, 168, 168); width: 80px; height: 30px;" class="btn btn-success btn-sm mr-5" [disabled]="!proveedorForm.form.valid">Guardar</button>
-                <button class="btn btn-primary btn-sm" type="button" style="background-color: red; color: white; width: 80px; height: 30px;" (click)=" irAlaListaProveedores()">Salir</button>
+            <div class="mt-5 mb-5 " align="center ">
+                <button type="submit" class="btn btn-success btn-sm mr-5" [disabled]="!proveedorForm.form.valid">Guardar</button>
+                <button class="btn btn-primary btn-sm" type="button"  (click)=" irAlaListaProveedores()">Salir</button>
             </div>
         </div>                                                            
     </form>
