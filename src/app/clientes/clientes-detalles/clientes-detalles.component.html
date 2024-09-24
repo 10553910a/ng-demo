@@ -1,74 +1,87 @@
 
 <div class="container mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);">
-    <div class="row">
-        <div class="input-group col-12 col-md-3 mt-1">
-            <div class="input-group-append">
-                <h4 class="text-center text-warning mt-3">Detalles del Cliente</h4>
-            </div>
+    <div class="row">       
+        <div class="input-group-append col-md-6">
+            <h4 class="text-center text-warning mt-3">Detalles del Cliente</h4>
         </div>
-    </div>
+        <div class="col-md-3 mt-2">
+            <button class="btn btn-sm btn-outline-warning text-white">Exportar a PDF</button>
+        </div>
+        <div class="col-md-3 mt-2">
+            <button  (click)="actualizarCliente(cliente.id_cliente)" class="btn btn-sm btn-outline-warning text-white">Editar Cliente</button>
+        </div>
+    </div>   
 </div>
-
-<div class="form novalidate border border-primary mt-2">
+<div class="form-container novalidate border border-primary mt-2">
     <div class="row mt-3 form-group ml-2 mr-2">
         <div class="col-md-6">
             <label class="text-primary">Id</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.id_cliente" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.id_cliente" placeholder="" readonly>
         </div>
         <div class="col-md-6">
             <label class="text-primary">Tipo Documento</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.tipo_documento" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.tipo_documento" placeholder="" readonly >
         </div>
     </div>    
     <div class="row mt-3 form-group ml-2 mr-2">
         <div class="col-md-6">
             <label class="text-primary">Nro. Documento</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.numero_documento" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.numero_documento" placeholder="" readonly>
         </div>
         <div class="col-md-6">
             <label class="text-primary">Tipo Contribuyente</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.tipo_contribuyente" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.tipo_contribuyente" placeholder="" readonly>
         </div>       
     </div>    
     <div class="row mt-3 form-group ml-2 mr-2">
         <div class="col-md-6">
             <label class="text-primary">Nombre o Razon social</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.razon_social" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.razon_social" placeholder="" readonly>
         </div>
         <div class="col-md-6">
             <label class="text-primary">Direccion</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.direccion" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.direccion" placeholder="" readonly>
         </div>        
-    </div>
-    
+    </div>    
     <div class="row mt-3 form-group ml-2 mr-2">        
         <div class="col-md-3">
             <label class="text-primary">Cta. Corriente</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.cuenta_corriente" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.cuenta_corriente" placeholder="" readonly>
         </div>
         <div class="col-md-3">
-            <label class="text-primary">Limite de Días</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.limites_dias" placeholder="">
+            <label class="text-primary">Limite De Credito</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.monto_maximo" placeholder="" readonly>
         </div>
         <div class="col-md-6">
             <label class="text-primary">Telefono</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.telefono" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.telefono" placeholder="" readonly>
         </div>
-    </div>
-    
-    <div class="row mt-3 form-group ml-2 mr-2">
+    </div>   
+    <div class="row mt-3 form-group ml-2 mr-2">        
+        <div class="col-md-3">
+            <label class="text-primary">Limites De Dias</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.limites_dias" placeholder="" readonly>
+        </div>
+        <div class="col-md-3">
+            <label class="text-primary">Activo/No Activo</label>
+            <input class="form-control" type="text" [(ngModel)]="cliente.status" placeholder="" readonly>
+        </div>
         <div class="col-md-6">
             <label class="text-primary">Mail</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.mail" placeholder="">
-        </div>            
-        <div class="col-md-6">
+            <input class="form-control" type="text" [(ngModel)]="cliente.mail" placeholder="" readonly>
+        </div>   
+    </div>  
+    <div class="row mt-3 form-group ml-2 mr-2">
+                
+        <div class="col-md-12">
             <label class="text-primary">Nota</label>
-            <input class="form-control" type="text" [(ngModel)]="cliente.nota" placeholder="">
+            <input class="form-control" type="text" [(ngModel)]="cliente.nota" placeholder="" readonly>
         </div>
     </div>
-
-    <div class="col-md-12 text-center mt-5">
-        <button class="btn btn-primary mb-5" type="button" (click)="onSubmit()">Retornar a la lista de clientes</button>
+    <div class="container mt-5 border-top border-primary">
+        <div class="mb-4 mt-5" align="center">
+            <button class="btn btn-primary mb-5" type="button" (click)="onSubmit()">Retornar a la lista de clientes</button>
+        </div>
     </div>
 </div>
 

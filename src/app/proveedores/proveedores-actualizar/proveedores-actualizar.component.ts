@@ -7,6 +7,7 @@ import { Provincias } from '../provincias';
 import { ProvinciasService } from '../provincias.service';
 import { TipoContrib} from '../tipoContribuy';
 import { TipoContribService } from '../../clientes/tipo-contrib.service';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-proveedores-actualizar',
@@ -43,7 +44,7 @@ export class ProveedoresActualizarComponent implements OnInit {
       else{ 
       }
 
-    });
+    }); 
   }
 
   onSubmit(){
@@ -87,6 +88,53 @@ private obtenerTipoContribuy(){
 
   });
 
+}
+irAlSiguiente(event: any, nextInput: HTMLInputElement) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Evitar el comportamiento por defecto del Enter en un formulario (submit)
+    nextInput.focus();
+  }
+}
+@ViewChild('localidad') localidad: ElementRef;
+
+  onProvinciaSelectChange() {
+    // Enfoca el input #telefonoInput
+    this.localidad.nativeElement.focus();
+  }
+
+    // ViewChild para obtener una referencia al elemento del DOM
+    @ViewChild('provinciaSelect') provinciaSelect: ElementRef;
+
+    // Función que se ejecuta cuando se presiona Enter en el input #localidadInput
+    onEnterPress() {
+      // Enfoca el select #provinciaSelect
+      this.provinciaSelect.nativeElement.focus();
+    }
+     // ViewChild para obtener una referencia al elemento del DOM
+     @ViewChild('tipoContSelect') tipoContSelect: ElementRef;
+
+     // Función que se ejecuta cuando se presiona Enter en el input #localidadInput
+     onTipoCont() {
+       // Enfoca el select #provinciaSelect
+       this.tipoContSelect.nativeElement.focus();
+     }
+     @ViewChild('cuitInput') cuitInput: ElementRef;
+
+     onTipoContr() {
+    // Enfoca el input #telefonoInput
+    this.cuitInput.nativeElement.focus();
+  }
+  @ViewChild('statusSelect') statusSelect: ElementRef;
+
+  onStatus() {
+ // Enfoca el input #telefonoInput
+ this.statusSelect.nativeElement.focus();
+}
+@ViewChild('tipoProveSelect') tipoProveSelect: ElementRef;
+
+onCambioStatus() {
+// Enfoca el input #telefonoInput
+this.tipoProveSelect.nativeElement.focus();
 }
 
 }

@@ -1,20 +1,10 @@
-form {
+form {  
     background-color: #f9f9f9;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para los inputs y selects con relieve */
-input.form-control, select.form-control {
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    padding: 12px;
-    font-size: 14px;
-    background-color: #f8f9fa;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15), -3px -3px 6px rgba(255, 255, 255, 0.8); /* Efecto de relieve */
-    transition: all 0.3s ease;
-}
 
 input.form-control:focus, select.form-control:focus {
     border-color: #637ef3;
@@ -61,26 +51,21 @@ label {
     font-size: 16px;
 }
 
-/* Estilos para el formulario */
-form {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 /* Estilos para inputs y selects con efecto de relieve */
 input.form-control, 
 select.form-control {
     border: none;
     border-radius: 8px;
-    padding: 12px 16px;
+    border-radius: 8px;
+    padding: 8px 12px; /* Reduce el padding */
     font-size: 14px;
     background: #e0e0e0;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
                 -4px -4px 8px rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
-    appearance: none; /* Para uniformidad en diferentes navegadores */
+   
 }
 
 /* Efecto al enfocar los campos */

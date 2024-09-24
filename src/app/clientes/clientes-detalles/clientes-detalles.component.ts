@@ -31,7 +31,11 @@ export class ClientesDetallesComponent implements OnInit {
     
   }
   onSubmit(){    
-      this.router.navigate(['/clientes']);      
+      this.router.navigate(['/clientes']);  
+           
+  }
+  actualizarCliente(id_cliente: number) {
+    this.router.navigate(['actualizar-clientes', id_cliente]);
   }
   
   

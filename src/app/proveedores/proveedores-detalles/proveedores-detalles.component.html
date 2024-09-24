@@ -44,7 +44,7 @@
             <input class="form-control" type="text" [(ngModel)]="proveedor.telefono" placeholder="">
         </div>
         <div class="col-md-6">
-            <label class="text-primary">Tipo Iva</label>
+            <label class="text-primary">Tipo Contribuyente</label>
             <input class="form-control" type="text" [(ngModel)]="proveedor.id_tipo_cont" placeholder="">
         </div>
     </div> 
@@ -64,9 +64,12 @@
             <input class="form-control" type="text" [(ngModel)]="proveedor.tipoProveedor " placeholder="">
         </div>
     </div>
-    <div class="text-center mt-5 mb-5">
-        <button class="btn btn-primary" (click)="onSubmit()" type="button">Retornar a la lista de Proveedores</button>
+    <div class="container mt-2 border-top border-primary">
+        <div class="text-center mt-5 mb-5">
+            <button class="btn btn-primary" (click)="onSubmit()" type="button">Retornar a la lista de Proveedores</button>
+        </div>
     </div>
+    
     
 </div>
 

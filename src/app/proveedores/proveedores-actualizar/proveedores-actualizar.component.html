@@ -6,29 +6,66 @@
             </div>	
         </div> 
     </div> 
-</div> 
+</div>  
 <form novalidate="novalidate" (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border border-primary mt-2 ">
-    <div class="row mt-5 ml-2 mr-2">
+    <div class="row mt-2 ml-2 mr-2">
       <div class="col-md-6">
         <label class="text-primary">Razon Social</label>
-        <input type="text" class="form-control" id="rsocial" [(ngModel)]="proveedor.razonSocial" name="rsocial" required minlength="3" maxlength="40" placeholder="" #rsocial="ngModel">
+        <input
+        type="text"
+        class="form-control"
+        id="rsocial"
+        [(ngModel)]="proveedor.razonSocial"
+        (keypress)="irAlSiguiente($event, contactoInput)"
+        name="rsocial"
+        required minlength="3"
+        maxlength="40"
+        placeholder=""
+        #rsocial="ngModel">
         <span class="invalid">*Requerido</span>
       </div>
       <div class="col-md-6">
         <label class="text-primary">Persona de contacto</label>
-        <input type="text" class="form-control" id="contacto" [(ngModel)]="proveedor.contacto" name="contacto" required="required" minlength="3" maxlength="40" placeholder="" #cont="ngModel">
+        <input #contactoInput
+        type="text"
+        class="form-control"
+        id="contacto"
+        [(ngModel)]="proveedor.contacto"
+        (keypress)="irAlSiguiente($event, direccion)"
+        name="contacto"
+        required="required"
+        minlength="3"
+        maxlength="40"
+        placeholder=""
+        #cont="ngModel">
         <span class="invalid">*Requerido</span>
       </div>
     </div>
     <div class="row mt-2 ml-2 mr-2">
       <div class="col-md-6">
         <label class="text-primary">Direccion</label>
-        <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" name="direccion" required="required" minlength="10" maxlength="40" placeholder="" #direc="ngModel">
+        <input #direccion
+        type="text"
+        class="form-control"
+        id="direccion"
+        [(ngModel)]="proveedor.direccion"
+        (keydown.enter)="onEnterPress()"
+        name="direccion"
+        required="required"
+        minlength="10"
+        maxlength="40"
+        placeholder=""
+        #direc="ngModel">
         <span class="invalid">*Requerido</span>
       </div>
       <div class="col-md-6">
         <label class="text-primary">Provincia</label>
-        <select class="form-control" name="provincia" id="idprovincia" [(ngModel)]="proveedor.provincia">
+        <select #provinciaSelect
+        class="form-control"
+        name="provincia"
+        id="idprovincia"
+        [(ngModel)]="proveedor.provincia"
+        (change)="onProvinciaSelectChange()">        
           <option *ngFor="let provincia of provincias" style="font-size: 12px;" [value]="provincia.provincia">{{ provincia.provincia }}</option>
         </select>
       </div>
@@ -36,7 +73,18 @@
     <div class="row mt-2 ml-2 mr-2">
       <div class="col-md-6">
         <label class="text-primary">Localidad</label>
-        <input type="text" class="form-control" id="localidad" [(ngModel)]="proveedor.localidad" name="localidad" required minlength="3" max="20" placeholder="" #local="ngModel">
+        <input #localidad
+         type="text"
+         class="form-control"
+         id="localidad"
+         [(ngModel)]="proveedor.localidad"
+         (keypress)="irAlSiguiente($event, telefono)"
+         name="localidad"
+         required
+         minlength="3"
+         max="20"
+         placeholder=""
+         #local="ngModel">
         <div class="alert alert-danger" *ngIf="local.invalid && (local.dirty || local.touched)">
           <div *ngIf="local.errors?.['required']"> Ingrese la localidad por favor </div>
           <div *ngIf="local.errors?.['minlength']"> La localidad debe tener minimo 5 caracteres </div>
@@ -45,7 +93,17 @@
       </div>
       <div class="col-md-6">
         <label class="text-primary">Telefono</label>
-        <input type="text" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" name="telefono" minlength="7" maxlength="15" placeholder="" #telef="ngModel">
+        <input #telefono
+        type="text"
+        class="form-control"
+        id="telefono"
+         [(ngModel)]="proveedor.telefono"
+         (keydown.enter)="onTipoCont()"
+         name="telefono"
+         minlength="7"
+         maxlength="15"
+         placeholder=""
+         #telef="ngModel">
         <div class="alert alert-danger" *ngIf="telef.invalid && (telef.dirty || telef.touched)">
           <div *ngIf="telef.errors?.['required']"> Ingrese el numero telefonico por favor </div>
           <div *ngIf="telef.errors?.['minlength']"> El numero debe tener minimo 7 caracteres </div>
@@ -56,27 +114,49 @@
     <div class="row mt-2 ml-2 mr-2">
       <div class="col-md-6">
         <label class="text-primary">Tipo contribuyente</label>
-        <select class="form-control" name="contrib" id="idContrib" [(ngModel)]="proveedor.id_tipo_cont">
+        <select #tipoContSelect
+         class="form-control"
+        name="contrib"
+        id="idContrib"
+        [(ngModel)]="proveedor.id_tipo_cont"
+        (change)="onTipoContr()">
           <option *ngFor="let tipoCont of tipoContrib" [value]=" tipoCont.id_tipoCont">{{ tipoCont.tipo_contribuyente }}</option>
         </select>
       </div>
       <div class="col-md-6">
         <label class="text-primary">Cuit</label>
-        <input type="text" class="form-control" id="idcuit" [(ngModel)]="proveedor.cuit" name="Ncuit" required="required" minlength="8" maxlength="20" placeholder="" #cuit="ngModel">
+        <input #cuitInput
+         type="text"
+         class="form-control"
+         id="idcuit"
+         [(ngModel)]="proveedor.cuit"
+         (keydown.enter)="onStatus()"
+         name="Ncuit"
+         required="required"
+         minlength="8"
+         maxlength="20"
+         placeholder=""
+         #cuit="ngModel">
         <span class="invalid">*Requerido</span>
       </div>
     </div>
     <div class="row mt-2 ml-2 mr-2">
       <div class="col-md-6">
         <label for="estado" class="text-primary">Status</label>
-        <select class="form-control" id="status" [(ngModel)]="proveedor.estado" name="status">
+        <select #statusSelect
+        class="form-control"
+        id="status"
+        [(ngModel)]="proveedor.estado"
+        (change)="onCambioStatus()"
+        name="status">
           <option value="activo">Activo</option>
           <option value="desactivo">Desactivo</option>
         </select>
       </div>
       <div class="col-md-6">
         <label for="tipoProveedor" class="text-primary">Tipo de proveedor</label>
-        <select class="form-control" id="tipoProveedor" [(ngModel)]="proveedor.tipoProveedor" name="tipoProveedor">
+        <select #tipoProveSelect
+         class="form-control" id="tipoProveedor" [(ngModel)]="proveedor.tipoProveedor" name="tipoProveedor">
           <option value="Contado">Contado</option>
           <option value="Credito">Crédito</option>
         </select>

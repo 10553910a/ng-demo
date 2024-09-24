@@ -44,17 +44,7 @@ label {
     color: #333;
 }
 
-/* Estilo personalizado para el botón */
-button {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
 
-button:hover {
-    background-color: #546be5;
-    box-shadow: none;
-}
 /* Estilos generales para labels */
 label {
     font-weight: bold;
@@ -74,13 +64,13 @@ input.form-control,
 select.form-control {
     border: none;
     border-radius: 8px;
-    padding: 12px 16px;
+    padding: 8px 12px; /* Reduce el padding */
     font-size: 14px;
     background: #e0e0e0;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
                 -4px -4px 8px rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
-    appearance: none; /* Para uniformidad en diferentes navegadores */
+   
 }
 
 /* Efecto al enfocar los campos */
@@ -101,43 +91,32 @@ select.option-selected {
 }
 
 /* Estilos para los botones */
-button.btn {
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
+.custom-button {
+    width: 150px;  /* Define un ancho estándar */
+    height: 40px;  /* Define una altura estándar */
+    font-size: 16px;  /* Ajusta el tamaño del texto */
+    border-radius: 5px;  /* Opcional, para bordes redondeados */
+    margin-right: 10px;  /* Espaciado entre los botones */
+  }
 
-button.btn-primary {
-    background-color: #637ef3;
-    color: #ffffff;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7);
-}
-
-button.btn-primary:hover {
-    background-color: #5268d1;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
-                -4px -4px 8px rgba(255, 255, 255, 0.7);
-}
-
-button.btn-danger {
-    background-color: #e74c3c;
-    color: #ffffff;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7);
-}
-
-button.btn-danger:hover {
-    background-color: #c0392b;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
-                -4px -4px 8px rgba(255, 255, 255, 0.7);
-}
 
 /* Estilos para mensajes de validación */
 .alert.alert-danger {
     margin-top: 5px;
     font-size: 13px;
 }
+.custom-button:hover {
+    background-color: #ffc107;  /* Color 'warning' de Bootstrap */
+    color: black;  /* Texto en negro para mejor contraste */
+  }
+  
+  /* Colores específicos para cada botón */
+  .btn-guardar {
+    background-color: green;
+    color: white;  /* Color del texto */
+  }
+  
+  .btn-salir {
+    background-color: blue;
+    color: white;
+  }
