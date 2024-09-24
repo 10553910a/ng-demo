@@ -56,6 +56,18 @@ export class RegistrarClientesComponent implements OnInit {
     // Enfoca el input #telefonoInput
     this.direccionInput.nativeElement.focus();
   }
+  @ViewChild('LimiteCreditoInput') LimiteCreditoInput: ElementRef;
+
+  onCtaCorriente() {
+    // Enfoca el input #telefonoInput
+    this.LimiteCreditoInput.nativeElement.focus();
+  }
+  @ViewChild('estadoSelect') estadoSelect: ElementRef;
+
+  irEstado() {
+    // Enfoca el input #telefonoInput
+    this.estadoSelect.nativeElement.focus();
+  }
 
   onEnter(event: any, nextInput: HTMLInputElement) {
     if (event.key === 'Enter') {
@@ -65,13 +77,23 @@ export class RegistrarClientesComponent implements OnInit {
   }
 
   @ViewChild('contriSelectc') contriSelectc: ElementRef;
+  @ViewChild('cuentacorriente') cuentacorriente: ElementRef;
+  @ViewChild('notasInput') notasInput: ElementRef;
 
   // Función que se ejecuta cuando se presiona Enter en el input #localidadInput
   onEnterPress() {
     // Enfoca el select #provinciaSelect
     this.contriSelectc.nativeElement.focus();
   }
-
+  irCtaCorriente() {
+    // Enfoca el select #provinciaSelect
+    this.cuentacorriente.nativeElement.focus();
+  }
+  irNota() {
+    // Enfoca el select #provinciaSelect
+    this.notasInput.nativeElement.focus();
+  }
+  
   private obtenerTipoDoc(){
     this.tipoDocService.getTiposDoc().subscribe(dato=>{
       if(dato.res=='OK'){

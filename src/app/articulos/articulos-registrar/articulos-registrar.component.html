@@ -1,6 +1,13 @@
-<h4 class="text-center mt-5">Registrar articulos</h4>
-
-<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-5" style="background-color: #daf4da">
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+    <div class="row">       
+        <div class="input-group col-12 col-md-6 mt-1">                      
+            <div class=" input-group-append">   
+                <h4 class="text-center  text-warning mt-3">Registro de Articulos</h4>               				  				
+            </div>	
+        </div> 
+    </div>
+</div> 
+<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-2" >
     <div class="row mt-5 ml-2 mr-2">
         <div class="col-md-6">
             <label class="text-primary">Descripcion</label>
@@ -195,11 +202,12 @@
     <br />
     <div class="container mt-5 border-top border-primary">
         <div class="mt-5 mb-5" align="center">
-            <button type="submit" style="background-color: #637ef3; color: white; width: 80px; height: 30px;" class="btn btn-success btn-sm mr-5" [disabled]="!clienteForm.form.valid">Guardar</button>
-            <button class="btn btn-primary btn-sm  mr-5" type="button" style="background-color: red; color: white; width: 80px; height: 30px;" (click)="irAlaListaArticulos()">Salir</button>
-            <button class="btn btn-primary btn-sm" type="button" style="background-color: rgb(71, 77, 43); color: white; width: 80px; height: 30px;" (click)="limpiar()">Limpiar</button>
+            <button type="submit" class="btn btn-sm custom-button btn-guardar" [disabled]="!clienteForm.form.valid">Guardar</button>
+            <button class="btn btn-sm custom-button btn-salir" (click)="irAlaListaArticulos()">Salir</button>
+            <button class="btn btn-sm custom-button btn-limpiar" type="button" (click)="limpiar()">Limpiar</button>
         </div>
     </div>
+    
 </form>
 
 

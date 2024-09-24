@@ -1,40 +1,5 @@
-/*input:invalid{
-    border: 1px solid #92cc00; 
-}
-input:valid+.invalid{
-visibility: hidden;
-}
-select{
-    border: 1px solid #92cc00; 
-}
-select:valid {
-    border-color:  #cadde8; /* Restablece el color del borde cuando el campo select es válido */
-/*}
-select.option-selected + span#requiredMessage {
-    display: none; /* Oculta el mensaje "Requerido" cuando se selecciona una opción */
-   
-/*}
-.custom-border-top {
-    border-top: 2px solid black; /* Aquí puedes ajustar el grosor y el color del borde */
-/*}*/
-/* Estilos generales para el formulario */
-form {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-}
 
-/* Estilos para los inputs y selects con relieve */
-input.form-control, select.form-control {
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    padding: 12px;
-    font-size: 14px;
-    background-color: #f8f9fa;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15), -3px -3px 6px rgba(255, 255, 255, 0.8); /* Efecto de relieve */
-    transition: all 0.3s ease;
-}
+
 
 input.form-control:focus, select.form-control:focus {
     border-color: #637ef3;
@@ -65,21 +30,28 @@ label {
 }
 
 /* Estilo personalizado para el botón */
-button {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+.custom-button{
+width: 150px;/*define el ancho estandar*/
+height: 40px;/*define el alto estandar*/
+font-size: 16px;  /* Ajusta el tamaño del texto */
+border-radius: 5px;  /* Opcional, para bordes redondeados */
+margin-right: 10px;  /* Espaciado entre los botones */
 }
+.custom-button:hover {
+    background-color: #ffc107;  /* Color 'warning' de Bootstrap */
+    color: black;  /* Texto en negro para mejor contraste */
+  }
+   /* Colores específicos para cada botón */
+   .btn-guardar {
+    background-color: green;
+    color: white;  /* Color del texto */
+  }
+  .btn-salir {
+    background-color: blue;
+    color: white;
+  }
 
-button:hover {
-    background-color: #546be5;
-    box-shadow: none;
-}
-/* Estilos generales para labels */
-label {
-    font-weight: bold;
-    font-size: 16px;
-}
+
 
 /* Estilos para el formulario */
 form {
@@ -119,45 +91,18 @@ select.option-selected {
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1), 
                 inset -2px -2px 5px rgba(255, 255, 255, 0.7);
 }
-
-/* Estilos para los botones */
-button.btn {
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-button.btn-primary {
-    background-color: #637ef3;
-    color: #ffffff;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7);
-}
-
-button.btn-primary:hover {
-    background-color: #5268d1;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
-                -4px -4px 8px rgba(255, 255, 255, 0.7);
-}
-
-button.btn-danger {
-    background-color: #e74c3c;
-    color: #ffffff;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7);
-}
-
-button.btn-danger:hover {
-    background-color: #c0392b;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
-                -4px -4px 8px rgba(255, 255, 255, 0.7);
-}
-
 /* Estilos para mensajes de validación */
 .alert.alert-danger {
     margin-top: 5px;
     font-size: 13px;
+}
+select.form-control {
+    width: 100%;  /* Asegúrate de que ocupe todo el ancho del contenedor */
+    min-width: 150px;  /* Asegura un ancho mínimo */
+    padding: 12px 16px;  /* Mantén el padding para que el texto no esté tan cerca del borde */
+}
+select.form-control {
+    padding: 10px 16px;  /* Ajusta el padding superior/inferior */
+    border-radius: 8px;  /* Bordes redondeados */
+    font-size: 14px;  /* Tamaño de fuente */
 }

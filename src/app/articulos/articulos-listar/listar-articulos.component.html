@@ -1,76 +1,73 @@
 
 <div class="container">
-    <div class="row mt-5">
-        <div class="container  mt-4 ml-0 row "  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
-            <div class="col-md-3 mt-2 mb-2">
-                <button (click)="registrarArticulos()" class="btn btn-sm btn-outline-warning text-dark">Registrar Articulos</button>
-            </div>
-            <div class="col-md-3 mt-2">
-                <button class="btn btn-sm btn-outline-success text-dark" >Exportar a Excel</button>
-            </div>
-            <div class="col-md-3 mt-2">
-                <button class="btn btn-sm btn-outline-danger text-dark">Exportar a PDF</button>
-            </div>
-            <div class="col-md-3 d-flex justify-content-between mb-3 mt-2">
-                <input type="text" id="nombreCliente" class="form-control slim-input" placeholder="Nombre del Articulo" [(ngModel)]="busqueda" (keydown.enter)="buscarArticulos()" />
-                <!--busqueda por pesionar enter-->
-                <button class="btn btn-sm btn-outline-warning text-dark " type="button" (click)="buscarArticulos()">
-                    <span class="d-flex align-items-center">Buscar</span>
-                </button>
-            </div>              
-        </div> 
-        
-       
-    <div class="card-body col-md-12" style="background-color: rgb(218, 250, 218); overflow: auto;">
+    <div class="row mt-0">
+      <div class="container  mt-4 ml-0 row " style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+        <div class="col-md-3 mt-2 mb-2">
+          <button (click)="registrarArticulos()" class="btn btn-sm btn-outline-warning text-white">Registrar Articulos</button>
+        </div>
+        <div class="col-md-3 mt-2">
+          <button class="btn btn-sm btn-outline-warning text-white">Exportar a Excel</button>
+        </div>
+        <div class="col-md-3 mt-2">
+          <button class="btn btn-sm btn-outline-warning text-white">Exportar a PDF</button>
+        </div>
+        <div class="col-md-3 d-flex justify-content-between mb-3 mt-2">
+          <input type="text" id="nombreCliente" class="form-control slim-input" placeholder="Nombre del Articulo" [(ngModel)]="busqueda" (keydown.enter)="buscarArticulos()" />
+          <!--busqueda por pesionar enter-->
+          <button class="btn btn-sm btn-outline-warning text-white " type="button" (click)="buscarArticulos()">
+            <span class="d-flex align-items-center">Buscar</span>
+          </button>
+        </div>
+      </div>
+      <div class="card-body col-md-12" style="background-color: rgb(218, 250, 218); overflow: auto;">
         <table class="table small table-striped">
-            <thead class="table-dark text-center">
-                <tr>
-                    <th>Descripcion</th>
-                    <th>Costo</th>
-                    <th>Precio</th>
-                    <th>Oferta</th>
-                    <th>Accion</th>
-                    <th>Accion</th>
-                    <th>Accion</th>                    
-                </tr>
-            </thead>
-            <tbody class="text-center">
-                <tr *ngFor="let art of articulos | slice: ( currentPage-1) * itemsPerPage : currentPage *  itemsPerPage">
-                    <td>{{art.descripcion}}</td>
-                    <td>{{art.precioCompra}}</td>
-                    <td>{{art.precioVenta}}</td>
-                    <td>{{art.precioOferta}}</td>                   
-                    <td>
-                        <button (click)="actualizarArticulo(art.idArticulo)" class="btn btn-sm btn-outline-warning text-dark">Editar</button>
-                    </td>
-                    <td>
-                        <button (click)="eliminarArticulo(art.idArticulo)" class="btn btn-sm btn-outline-warning text-dark">Eliminar</button>
-                    </td>
-                    <td>
-                        <button (click)="verDetalles(art.idArticulo)" class="btn btn-sm btn-outline-warning text-dark">Detalles</button>
-                    </td>
-                </tr>
-            </tbody>
+          <thead class="table-dark text-center">
+            <tr>
+              <th>Descripcion</th>
+              <th>Costo</th>
+              <th>Precio</th>
+              <th>Oferta</th>
+              <th>Accion</th>
+              <th>Accion</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <tr *ngFor="let art of articulos | slice: ( currentPage-1) * itemsPerPage : currentPage *  itemsPerPage">
+              <td>{{art.descripcion}}</td>
+              <td>{{art.precioCompra}}</td>
+              <td>{{art.precioVenta}}</td>
+              <td>{{art.precioOferta}}</td>
+              <td>
+                <button (click)="actualizarArticulo(art.idArticulo)" class="btn btn-sm btn-outline-warning text-dark">Editar</button>
+              </td>
+              <td>
+                <button (click)="eliminarArticulo(art.idArticulo)" class="btn btn-sm btn-outline-warning text-dark">Eliminar</button>
+              </td>
+              <td>
+                <button (click)="verDetalles(art.idArticulo)" class="btn btn-sm btn-outline-warning text-dark">Detalles</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
         <!-- Paginación -->
         <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item" [class.disabled]="currentPage === 1">
-                    <button class="page-link" (click)="paginaAnterior()" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </button>
-                </li>
-                <li class="page-item" *ngFor="let page of getPaginas() | slice:(currentPage-1)-5:(currentPage-1)+5" [class.active]="currentPage === page">
-                    <button class="page-link" (click)="cambiarPagina(page)">{{ page }}</button>
-                </li>
-                <li class="page-item" [class.disabled]="currentPage === getTotalPaginas()">
-                    <button class="page-link" (click)="paginaSiguiente()" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </button>
-                </li>
-            </ul>
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <button class="page-link" (click)="paginaAnterior()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+            <li class="page-item" *ngFor="let page of getPaginas() | slice:(currentPage-1)-5:(currentPage-1)+5" [class.active]="currentPage === page">
+              <button class="page-link" (click)="cambiarPagina(page)">{{ page }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === getTotalPaginas()">
+              <button class="page-link" (click)="paginaSiguiente()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
         </nav>
+      </div>     
     </div>
-    <router-outlet></router-outlet>
-</div> 
-</div>
+  </div>
