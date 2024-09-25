@@ -8,7 +8,11 @@
         </div> 
     </div>
 </div>      
-<form novalidate (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border border-primary rounded mt-2" >
+<form novalidate (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border-double border-primary mt-2">
+    <fieldset>
+        <legend>
+            Datos del contacto
+        </legend>
         <div class="row mt-2 ml-2 mr-2">  
             <div class="col-md-6">
                 <label class="text-primary">Razon Social</label>
@@ -42,6 +46,12 @@
                 <span class="invalid">*</span>        
             </div>
         </div> 
+    </fieldset>
+      <fieldset>
+        <legend>
+            Datos de la empresa
+        </legend>
+       
         <div class="row ml-2 mr-2 mt-2">
             <div class="col-md-6">
                 <label class="text-primary">Direccion</label>
@@ -163,8 +173,9 @@
             <div class="col-md-6">                          
             </div>
         </div> 
+    </fieldset>
         <div class="container mt-2 border-top border-primary">
-            <div class="mt-5 mb-5 " align="center ">
+            <div class="mt-4 mb-0 " align="center ">
                 <button type="submit" class="btn custom-button btn-guardar" [disabled]="!proveedorForm.form.valid">Guardar</button>
                 <button class="btn custom-button btn-salir" type=""  (click)=" irAlaListaProveedores()">Salir</button>
             </div>
