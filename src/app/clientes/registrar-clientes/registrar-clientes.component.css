@@ -37,20 +37,20 @@ font-size: 16px;  /* Ajusta el tamaño del texto */
 border-radius: 5px;  /* Opcional, para bordes redondeados */
 margin-right: 10px;  /* Espaciado entre los botones */
 }
-.custom-button:hover {
+.btn:hover {
     background-color: #ffc107;  /* Color 'warning' de Bootstrap */
     color: black;  /* Texto en negro para mejor contraste */
   }
    /* Colores específicos para cada botón */
-   .btn-guardar {
-    background-color: green;
-    color: white;  /* Color del texto */
-  }
-  .btn-salir {
+ 
+   .btn {
     background-color: blue;
     color: white;
+    border-radius: 8px;
+    width: 80px; /* Ancho definido */
+    height: 30px;  /* Alto definido */
+    margin-right: 10px; /* Espacio a la derecha de cada botón */
   }
-
 
 
 /* Estilos para el formulario */
@@ -58,8 +58,12 @@ form {
     background-color: #f9f9f9;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  }  
+  .border-double {
+    border-style: double;
+    border-width: 4px; /* Ajusta el grosor del borde doble */
+  }
 
 /* Estilos para inputs y selects con efecto de relieve */
 input.form-control, 

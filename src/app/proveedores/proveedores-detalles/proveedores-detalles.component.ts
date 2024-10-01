@@ -33,5 +33,9 @@ export class ProveedoresDetallesComponent implements OnInit {
   onSubmit(){    
     this.router.navigate(['/proveedores']);      
 }
+actualizarProveedor(id_proveedor:number){
+  this.router.navigate(['proveedores-actualizar',id_proveedor]);
+    
+}
 
 }

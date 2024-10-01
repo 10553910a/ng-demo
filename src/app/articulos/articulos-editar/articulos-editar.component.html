@@ -7,7 +7,7 @@
         </div> 
     </div>
 </div>
-<div class="form novalidate border border-primary mt-2">
+<div class="form novalidate border-double border-primary mt-2">
     <div class="row mt-3 form-group ml-2 mr-2">
         <div class="col-md-6">
             <label class="text-primary">Id Articulo</label>
@@ -122,9 +122,9 @@
             [(ngModel)]="articulos.iva">
         </div>
     </div>
-    <div class="col-md-12 text-center mt-5">
-        <button class="btn btn-primary mb-5 mr-2" type="button" (click)="onSubmit()">Retornar a la lista de artículos</button>
-        <button class="btn btn-primary mb-5 ml-2" type="button" (click)="actualizarArticulo()">Guardar Cambios</button>
+</div>
+    <div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+        <button class="btn btn-primary mt-2 " type="button" (click)="onSubmit()">Retornar a la lista de artículos</button>
+        <button class="btn btn-primary mt-2 ml-5" type="button" (click)="actualizarArticulo()">Guardar Cambios</button>
     </div>
     
-</div>

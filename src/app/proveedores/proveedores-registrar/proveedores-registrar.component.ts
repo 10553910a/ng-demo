@@ -27,6 +27,7 @@ export class ProveedoresRegistrarComponent implements OnInit {
   tipoProveedor: TipoProveedor[];
   tipoContrib:TipoContrib[];
   
+  
 
   constructor(private proveedorServicio:ProveedoresService,private router:Router,private dialog: MatDialog,
     private provinciaService:ProvinciasService, private tipoProvService:TipoProveedorService,
@@ -49,7 +50,7 @@ export class ProveedoresRegistrarComponent implements OnInit {
 
     });
 
-  }
+  } 
   // ViewChild para obtener una referencia al elemento del DOM
   @ViewChild('provinciaSelect') provinciaSelect: ElementRef;
 
@@ -73,19 +74,26 @@ export class ProveedoresRegistrarComponent implements OnInit {
     // Enfoca el select #provinciaSelect
     this.tipoProveedorSelect.nativeElement.focus();
   }
-
-  @ViewChild('statusSelect') statusSelect: ElementRef;
-
-  // Función que se ejecuta cuando se presiona Enter en el input #localidadInput
-  onEnterPress4() {
-    // Enfoca el select #provinciaSelect
-    this.statusSelect.nativeElement.focus();
-  }
+  
   @ViewChild('telefonoInput') telefonoInput: ElementRef;
+
+  onStatusChange() {
+    // Enfoca el input #telefonoInput
+    this.telefonoInput.nativeElement.focus();
+  }
+
+
+  @ViewChild('localidadInput') localidadInput: ElementRef;
 
   onProvinciaSelectChange() {
     // Enfoca el input #telefonoInput
-    this.telefonoInput.nativeElement.focus();
+    this.localidadInput.nativeElement.focus();
+  }
+  @ViewChild('statusSelect') statusSelect: ElementRef;
+
+  ontipoProveedorChange() {
+    // Enfoca el input #telefonoInput
+    this.statusSelect.nativeElement.focus();
   }
   
 

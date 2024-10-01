@@ -140,6 +140,19 @@ export class RegistrarClientesComponent implements OnInit {
   onSubmit(){
   this.guardarClientes();
   }
+  limpiar(){
+    this.clientes.tipo_documento = null;
+    this.clientes.numero_documento = null;
+    this.clientes.razon_social = null;
+    this.clientes.tipo_contribuyente = null;
+    this.clientes.direccion = null;
+    this.clientes.mail = null;
+    this.clientes.cuenta_corriente = null;
+    this.clientes.monto_maximo = null;
+    this.clientes.telefono = null;
+    this.clientes.status = null;
+    this.clientes.nota = null;      
+  }
   
 }
 

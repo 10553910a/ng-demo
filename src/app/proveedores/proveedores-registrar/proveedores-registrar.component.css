@@ -105,21 +105,27 @@ select.option-selected {
     margin-top: 5px;
     font-size: 13px;
 }
-.custom-button:hover {
+.custom-button{ 
+    width: 150px;/*define el ancho estandar*/
+    height: 40px;/*define el alto estandar*/
+    font-size: 16px;  /* Ajusta el tamaño del texto */
+    border-radius: 5px;  /* Opcional, para bordes redondeados */
+    margin-right: 10px;  /* Espaciado entre los botones */
+    }
+.btn:hover {
     background-color: #ffc107;  /* Color 'warning' de Bootstrap */
     color: black;  /* Texto en negro para mejor contraste */
-  }
-  
-  /* Colores específicos para cada botón */
-  .btn-guardar {
-    background-color: green;
-    color: white;  /* Color del texto */
-  }
-  
-  .btn-salir {
+    }
+    /* Colores específicos para cada botón */
+    
+.btn {
     background-color: blue;
     color: white;
-  }
+    border-radius: 8px;
+    width: 80px; /* Ancho definido */
+    height: 30px;  /* Alto definido */
+    margin-right: 10px; /* Espacio a la derecha de cada botón */
+}
   .border-double {
     border-style: double;
     border-width: 4px; /* Ajusta el grosor del borde doble */
@@ -134,7 +140,7 @@ fieldset {
 legend {
     font-weight: bold;
     font-size: 16px;
-    color: #007bff; /* Color del texto */
+    color: #030910; /* Color del texto */
     padding: 0 10px; /* Espaciado alrededor del texto */
 }
 

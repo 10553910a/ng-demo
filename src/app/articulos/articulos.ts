@@ -2,20 +2,22 @@ export class Articulos{
     idArticulo:number;
     descripcion:string;
     presentacion:string;
-    unidadVenta:string;
-    codigo:string;
     barra:number;
+    codigo:string;
     idMarca:number;
+    idRubro:number;
     idProveedor:number; 
-    idRubro:number;      
+    unidadVenta:string;
+    puntoPedido:number;                        
     precioCompra:number;
     margen:number;
     precioVenta:number;
     iva:number;
+    otroImpuesto:number;
     precioVentaIva:number;
     porcentajeDescuento:number;
     precioOferta:number;
-    puntoPedido:number;   
+    fechaDesde:string;
+    fechaHasta:string; 
     
-
 }

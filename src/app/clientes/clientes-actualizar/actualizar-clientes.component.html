@@ -1,16 +1,16 @@
-<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); min-height: 60px;/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
     <div class="row">       
-        <div class="input-group col-12 col-md-3 mt-1">                      
+        <div class="input-group col-12 col-md-3 mt-0">                      
             <div class=" input-group-append">   
                 <h4 class="text-center  text-warning mt-3">Editar Cliente</h4>               				  				
             </div>	
         </div> 
     </div> 
 </div>
-<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-1"> 
+<form  #clienteForm="ngForm" class="border-double border-primary mt-2"> 
     <div class="row mt-1 ml-2 mr-2">
         <div class="col-md-6">
-            <label class="text-primary">Tipo Documento</label>
+            <label class="text-primary">Tipo Documento *</label>
             <select class="form-control"
                 name="tdocumento"
                 id="idtdocumento"
@@ -19,11 +19,10 @@
                 [(ngModel)]="clientes.tipo_documento" 
                 onchange="this.classList.add('option-selected')"> <!-- Agrega la clase 'option-selected' al select -->                
                 <option *ngFor="let tipoDoc of tipoDoc" style="font-size: 14px;" [value]="tipoDoc.tipo_documento">{{ tipoDoc.tipo_documento }}</option>
-            </select>
-            <span class="invalid" id="requiredMessage"></span> <!-- Agrega un ID al elemento span -->
+            </select>           
         </div>
         <div class="col-md-6">
-            <label class="text-primary">Numero de Documento</label>
+            <label class="text-primary">Numero de Documento *</label>
             <input
             type="number"
             class="form-control"
@@ -32,13 +31,12 @@
              name="ndoc"
              required
              minlength="6"
-             maxlength="10"/>
-             <span class="invalid">*Requerido</span> 
+             maxlength="10"/>            
         </div>        
     </div>
     <div class="row ml-2 mr-2">      
         <div class="col-md-6">
-            <label class="text-primary">Razon Social / Nombres y Apellidos</label>
+            <label class="text-primary">Razon Social / Nombres y Apellidos *</label>
             <input type="text"
             class="form-control"
             id="rsocial"
@@ -47,8 +45,7 @@
             required minlength="3"
             maxlength="100"
             placeholder=""
-            #rsocial="ngModel" />
-            <span class="invalid">*Requerido</span>
+            #rsocial="ngModel" />          
         </div>
         <div class="form-group col-md-6">
             <label class="text-primary">Tipo contribuyente</label>
@@ -180,12 +177,12 @@
             placeholder=""
             #nota="ngModel"/>            
         </div>
-    </div>       
-        <div class="container mt-5 border-top border-primary">
-            <div class="mb-4 mt-5" align="center">
-                <button type="submit" class="btn  btn-sm custom-button btn-guardar" [disabled]="!clienteForm.form.valid">Guardar</button>
-                <button class="btn btn-primary btn-sm custom-button btn-salir" type="button" (click)="irAlaListaClientes()" >Salir</button>
-            </div> 
-        </div>           
-</form>
+    </div> 
+</form>             
+<div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+    <button type="submit" class="btn btn-sm btn-outline-warning text-while mt-3" (click)=" editarClientes()">Guardar</button>
+    <button class="btn btn-sm btn-outline-warning text-while mt-3" type="button" (click)="irAlaListaClientes()" >Salir</button>
+</div> 
+               
+
     

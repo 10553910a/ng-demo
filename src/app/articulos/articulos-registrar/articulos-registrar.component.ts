@@ -13,19 +13,30 @@ import { Rubro } from '../rubros';
 import { RubrosService } from '../rubros.service';
 import { Unidad } from '../unidad-venta';
 import { UnidadVentaService } from '../unidad-venta.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { DateAdapter } from '@angular/material/core';
+import { formatDate } from '@angular/common';
+
+
+
+
 
 @Component({
   selector: 'app-articulos-registrar',
   templateUrl: './articulos-registrar.component.html',
   styleUrls: ['./articulos-registrar.component.css']
 })
+
 export class ArticulosRegistrarComponent implements OnInit {
   @ViewChild('marcasSelect') marcasSelect: ElementRef;
-  @ViewChild('proveedorSelect') proveedorSelect: ElementRef;
   @ViewChild('rubroSelect') rubroSelect: ElementRef;
-  @ViewChild('precioInput') precioInput: ElementRef;
   @ViewChild('unidadSelect') unidadSelect: ElementRef;
+  @ViewChild('proveedorSelect') proveedorSelect: ElementRef;
   @ViewChild('codigoInput') codigoInput: ElementRef;
+  @ViewChild('stockMinimoInput') stockMinimoInput: ElementRef;
+ 
+
+
   
   
   constructor( private router:Router,
@@ -34,7 +45,12 @@ export class ArticulosRegistrarComponent implements OnInit {
   private marcasService : MarcasService,
   private proveedoresService : ProveedoresService,
   private rubrosService: RubrosService,
-  private unidadService:UnidadVentaService){}
+  private unidadService:UnidadVentaService,
+  private dateAdapter:DateAdapter<Date>,
+ ){
+    this.dateAdapter.setLocale('es-ES');
+  
+  }
 
   articulos : Articulos = new Articulos();
   marcas: Marcas[];
@@ -42,6 +58,7 @@ export class ArticulosRegistrarComponent implements OnInit {
   rubros: Rubro[];
   unidad: Unidad[];
   codigo: '' // Esta propiedad almacenará el valor en el formato deseado
+ 
   
   
   ngOnInit(): void {
@@ -50,7 +67,8 @@ export class ArticulosRegistrarComponent implements OnInit {
     this.obtenerRubros();
     this.obtenerUnidadVenta();
   }
-   onSubmit(){
+   guardar(){
+    console.log('Artículo antes de guardar:', this.articulos);
     this.guardarArticulos();
   }
   private obtenerMarcas(){
@@ -97,31 +115,33 @@ export class ArticulosRegistrarComponent implements OnInit {
     });
   }
 
-  guardarArticulos(){
-    this.articulosServicio.registrarArticulos(this.articulos).subscribe(datos=>{
-      if(datos.res=='OK'){
+  guardarArticulos() {
+    // Formatear fechaDesde antes de enviar los datos
+    if (this.articulos.fechaDesde) {
+      this.articulos.fechaDesde = formatDate(this.articulos.fechaDesde, 'dd-MM-yyyy', 'en-US');
+    }
+    if (this.articulos.fechaHasta) {
+      this.articulos.fechaHasta = formatDate(this.articulos.fechaHasta, 'dd-MM-yyyy', 'en-US');
+    }
+
+    this.articulosServicio.registrarArticulos(this.articulos).subscribe(datos => {
+      if (datos.res === 'OK') {
         alert('Registro exitoso');
-        console.log(datos);
-        
         const dialogRef = this.dialog.open(ConfirmarRegistroArticulosDialog, {
           width: '400px',
-          data: {},
-          position: {top: '50',left: '50%' },
+          position: { top: '50', left: '50%' },
           panelClass: 'my-dialog'
         });
+
         dialogRef.afterClosed().subscribe(result => {
           if (result === true) {
-            // Si el usuario seleccionó "Sí", se queda en la plantilla de registrar proveedores
-            console.log("Registro otro proveedor");
-            this.articulos = new Articulos();
+            this.articulos = new Articulos(); // Limpiar el formulario
           } else {
-            // Si el usuario seleccionó "No", se va a la plantilla de listar proveedores
-            console.log("Listar proveedores");
-            this.irAlaListaArticulos();
+            this.irAlaListaArticulos(); // Navegar a la lista de artículos
           }
-        })
+        });
       }
-    }); 
+    });
   }
 
   irAlaListaArticulos(){
@@ -139,30 +159,27 @@ onEnter(event: KeyboardEvent, nextInput: HTMLInputElement) {
 
 
 // Función que se ejecuta cuando se presiona Enter en el input #localidadInput
-onEnterPress() {
+irMarcas() {
   // Enfoca el select #provinciaSelect
   this.marcasSelect.nativeElement.focus();
 }
-onEnterPress2() {
-  // Enfoca el select #provinciaSelect
-  this.unidadSelect.nativeElement.focus();
-}
 
+ 
 onUnidadSelectChange() {
   // Enfoca el input #telefonoInput
-  this.codigoInput.nativeElement.focus();
+  this.stockMinimoInput.nativeElement.focus();
 }
 
 onMarcaSelectChange() {
   // Enfoca el input #telefonoInput
-  this.proveedorSelect.nativeElement.focus();
+  this.rubroSelect.nativeElement.focus();
 }
 
 
 
 onProveedorSelectChange() {
   // Enfoca el input #telefonoInput
-  this.rubroSelect.nativeElement.focus();
+  this.unidadSelect.nativeElement.focus();
 }
 
 
@@ -170,7 +187,7 @@ onProveedorSelectChange() {
 onRubroSelectChange() {
  
   // Enfoca el input #telefonoInput
-  this.precioInput.nativeElement.focus();
+  this.proveedorSelect.nativeElement.focus();
 }
 
 calcularMargen(){
@@ -264,6 +281,7 @@ formatCodigo(newValue: string): void {
   }
 }
 
+
 limpiar(){
   this.articulos.descripcion = '';
   this.articulos.presentacion = '';
@@ -277,14 +295,13 @@ limpiar(){
   this.articulos.margen = null;
   this.articulos.precioVenta = null;
   this.articulos.iva = null;
+  this.articulos.otroImpuesto=null;
   this.articulos.precioVentaIva = null;
   this.articulos.porcentajeDescuento = null;
   this.articulos.precioOferta = null;
   this.articulos.puntoPedido = null;
+  this.articulos.fechaDesde = null;
+  this.articulos.fechaHasta = null;
 
 }
-
-
-
-
 }

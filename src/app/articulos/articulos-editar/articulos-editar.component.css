@@ -124,10 +124,13 @@ select.option-selected {
   }
   
 
-
-
 /* Estilos para mensajes de validación */
 .alert.alert-danger {
     margin-top: 5px;
     font-size: 13px;
+}
+.borde-double{
+    border-style: double;
+    border-width: 4px; /* Ajusta el grosor del borde doble */
+
 }

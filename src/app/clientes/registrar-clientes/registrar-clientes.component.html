@@ -1,16 +1,16 @@
-<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+<div class="container  mt-2 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); ;min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
     <div class="row">       
-        <div class="input-group col-12 col-md-3 mt-1">                      
+        <div class="input-group col-12 col-md-3 mt-0">                      
             <div class=" input-group-append">   
                 <h4 class="text-center  text-warning mt-3">Registro de Cliente</h4>               				  				
             </div>	
         </div> 
     </div>
 </div>
-<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-1" >    
+<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border-double border-primary mt-2" >    
     <div class="row mt-1 ml-2 mr-2">
         <div class="col-md-6">
-            <label class="text-primary">Tipo Documento</label>
+            <label class="text-primary">Tipo Documento *</label>
             <select 
             class="form-control"
             name="tdocumento"
@@ -22,10 +22,10 @@
             onchange="this.classList.add('option-selected')"> <!-- Agrega la clase 'option-selected' al select -->                
             <option *ngFor="let tipoDoc of tipoDoc" style="font-size: 14px;" [value]="tipoDoc.tipo_documento">{{ tipoDoc.tipo_documento }}</option>
             </select>
-            <span class="invalid" id="requiredMessage">*Requerido</span> <!-- Agrega un ID al elemento span -->
+            
         </div>
         <div class="col-md-6">
-            <label class="text-primary">Numero de Documento</label>
+            <label class="text-primary">Numero de Documento *</label>
             <input #documentoInput
             type="number"
             class="form-control"
@@ -36,12 +36,12 @@
              required
              minlength="6"
              maxlength="10"/>
-             <span class="invalid">*Requerido</span> 
+           
         </div>      
     </div>
     <div class="row ml-2 mr-2">       
         <div class="col-md-6">
-            <label class="text-primary">Razon Social / Nombres y Apellidos</label>
+            <label class="text-primary">Razon Social / Nombres y Apellidos *</label>
             <input #nombreInput
             type="text"
             class="form-control"
@@ -185,16 +185,13 @@
                        placeholder="" 
                        #nota="ngModel" />                
             </div>            
-        </div>      
-    <br> 
-    <div class="container mt-3 border-top border-primary">
-        <div class="mt-5 mb-4 " align="center ">
-            <button type="submit"  class="btn  btn-sm custom-button btn-guardar" [disabled]="!clienteForm.form.valid">Guardar</button>
-            <button class="btn btn-primary btn-sm custom-button btn-salir" type="button"  (click)="irAlaListaClientes()">Salir</button>
-        </div>
-    </div>
+        </div>                       
 </form>
-
+<div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+    <button type="submit"  class="btn btn-sm btn-outline-warning text-while mt-3 " [disabled]="!clienteForm.form.valid">Guardar</button>
+    <button class="btn btn-sm btn-outline-warning text-while mt-3 " type="button"  (click)="irAlaListaClientes()">Salir</button>
+    <button class="btn btn-sm btn-outline-warning text-while mt-3 " type="button" (click)="limpiar()"  >Limpiar</button>
+</div>
  
 
 

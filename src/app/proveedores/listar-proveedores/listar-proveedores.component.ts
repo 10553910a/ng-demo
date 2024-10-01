@@ -82,9 +82,9 @@ export class ProveedoresComponent implements OnInit{
             });
          
       }
-    });
+    }); 
   }
-  actualizarProveedor(id_proveedor:number){
+  actualizarProveedor(id_proveedor:number){    
     this.router.navigate(['proveedores-actualizar',id_proveedor]);
       
   }

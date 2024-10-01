@@ -1,118 +1,177 @@
 
-<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
-    <div class="row">       
-        <div class="input-group col-12 col-md-6 mt-1">                      
-            <div class=" input-group-append">   
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+    <div class="row">                                    
+            <div class=" input-group-append col-md-6 mt-0">   
                 <h4 class="text-center  text-warning mt-3">Registro de Proveedores</h4>               				  				
-            </div>	
-        </div> 
+            </div>	        
     </div>
 </div>      
 <form novalidate (ngSubmit)="onSubmit()" #proveedorForm="ngForm" class="border-double border-primary mt-2">
-    <fieldset>
+    <fieldset class="mt-2">
         <legend>
-            Datos del contacto
+            Datos Del Contacto
         </legend>
-        <div class="row mt-2 ml-2 mr-2">  
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-3">
+                <label class="text-primary">Nombre Persona de contacto</label>
+                <input #contactoInput 
+                type="text"                
+                class="form-control"
+                id="nombreContacto" 
+                [(ngModel)]="proveedor.contacto"
+                (keypress)="onEnter($event, cuitContactoInput)"
+                name="nombreContacto"
+                required="required"
+                minlength="3"
+                maxlength="40"
+                placeholder=""            
+                #cont = "ngModel">                        
+            </div>  
+            <div class="col-md-3">
+                <label class="text-primary">Cuit de Contacto</label>
+                <input #cuitContactoInput
+                type="text"                
+                class="form-control" 
+                id="cuitContacto"
+                [(ngModel)]="proveedor.cuil_contacto"
+                (keypress)="onEnter($event, dniContactoInput)"
+                name="cuitContacto"
+                required="required"
+                minlength="3"
+                maxlength="14"
+                placeholder=""
+                #cuitContac = "ngModel">                                                   
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">DNI de Contacto</label>
+                <input #dniContactoInput
+                type="text"                
+                class="form-control" 
+                id="dniContacto"
+                [(ngModel)]="proveedor.dni_proveedor"
+                (keypress)="onEnter($event, direccionInput)"
+                name="cuitContacto"
+                required="required"
+                minlength="3"
+                maxlength="14"
+                placeholder=""
+                #cuitContac = "ngModel">                                                   
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Telefono</label>
+                <input #telefonoContactoImput
+                type="text"                
+                class="form-control"
+                id="ntelefonoContacto" 
+                [(ngModel)]="proveedor.telefono_contacto"
+                (keypress)="onEnter($event, emailContactoInput)"
+                name="telefonoContacto"
+                required="required"
+                minlength="3"
+                maxlength="40"
+                placeholder=""            
+                #telCont = "ngModel">                        
+            </div>                    
+        </div> 
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-6">
+                <label class="text-primary">Direccion</label>
+                <input #direccionInput
+                type="text"                
+                class="form-control" 
+                id="direccion"
+                [(ngModel)]="proveedor.direccion_contacto"
+                (keypress)="onEnter($event, telefonoContactoImput)"
+                name="direccion"
+                required=""
+                minlength="3"
+                maxlength="40"
+                placeholder=""
+                #direcContac = "ngModel">                                                   
+            </div> 
+            <div class="col-md-6">
+                <label class="text-primary">Email</label>
+                <input #emailContactoInput
+                type="text"                
+                class="form-control" 
+                id="cuitContacto"
+                [(ngModel)]="proveedor.email_contacto"
+                (keypress)="onEnter($event, razonSocialInput)"
+                name="cuitContacto"
+                required="required"
+                minlength="3"
+                maxlength="50"
+                placeholder=""
+                #email = "ngModel">                                                   
+            </div>                    
+        </div>
+    </fieldset>
+      <fieldset>
+        <legend>
+            Datos de la Empresa
+        </legend>       
+        <div class="row ml-2 mr-2 mt-2">
             <div class="col-md-6">
                 <label class="text-primary">Razon Social</label>
-                <input type="text"                
+                <input #razonSocialInput
+                type="text"                
                 class="form-control" 
                 id="rsocial"
                 [(ngModel)]="proveedor.razonSocial"
+                (keypress)="onEnter($event, direccionEmpresaInput)"
                 name="rsocial"
                 required="required"
                 minlength="3"
                 maxlength="40"
                 placeholder=""
-                #rsocial = "ngModel"
-                (keypress)="onEnter($event, contactoInput)">  
+                #rsocial = "ngModel">  
                 <span class="invalid">*</span>                                  
             </div>
             <div class="col-md-6">
-                <label class="text-primary">Persona de contacto</label>
-                <input #contactoInput 
-                type="text"                
-                class="form-control"
-                id="contacto" 
-                [(ngModel)]="proveedor.contacto"
-                name="contacto"
-                required="required"
-                minlength="3"
-                maxlength="40"
-                placeholder=""            
-                #cont = "ngModel"
-                (keypress)="onEnter($event, direccionInput)"> 
-                <span class="invalid">*</span>        
-            </div>
-        </div> 
-    </fieldset>
-      <fieldset>
-        <legend>
-            Datos de la empresa
-        </legend>
-       
-        <div class="row ml-2 mr-2 mt-2">
-            <div class="col-md-6">
                 <label class="text-primary">Direccion</label>
-                <input #direccionInput 
+                <input #direccionEmpresaInput 
                 type="text"                
                 class="form-control" 
                 id="direccion" 
                 [(ngModel)]="proveedor.direccion"
+                (keydown.enter)="onEnterPress()"
                 name="direccion"
                 required="required"
                 minlength="1"
                 maxlength="40"
                 placeholder=""
-                #direc = "ngModel"
-                (keydown.enter)="onEnter($event, localidadInput)">
+                #direc = "ngModel">
                 <span class="invalid">*</span> 
-            </div>
-            <div class="col-md-6">
-                <label class="text-primary">Localidad</label>
-                <input #localidadInput 
-                type="text"                 
-                class="form-control" 
-                id="localidad" 
-                [(ngModel)]="proveedor.localidad"
-                name="localidad"                
-                minlength="3"
-                maxlength="20"
-                placeholder=""
-                #local="ngModel"                
-                (keydown.enter)="onEnterPress()">              
-            </div>                          
+            </div>                                     
         </div>   
         <div class="row ml-2 mr-2 mt-2">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <label class="text-primary">Provincia</label> 
                 <select #provinciaSelect
                 class="form-control"
                 name="provincia"
                 id="idprovincia"
                 [(ngModel)]="proveedor.provincia"
-                (change)="onProvinciaSelectChange()">
+                (change)="onProvinciaSelectChange()"
+                #provincia ="ngModel">
                 <option *ngFor="let provincia of provincias" style="font-size: 12px;" [value]="provincia.provincia">{{ provincia.provincia }}</option>
                 </select>
             </div>
-            <div class="col-md-6">
-                <label class="text-primary">Telefono</label>
-                <input #telefonoInput 
-                type="text"               
+            <div class="col-md-3">
+                <label class="text-primary">Localidad</label>
+                <input #localidadInput 
+                type="text"                 
                 class="form-control" 
-                id="telefono" 
-                [(ngModel)]="proveedor.telefono"
-                name="telefono"            
-                minlength="7"
-                maxlength="15"
+                id="localidad" 
+                [(ngModel)]="proveedor.localidad"
+                (keydown.enter)="onEnterPress2()"
+                name="localidad"                
+                minlength="3"
+                maxlength="20"
                 placeholder=""
-                #telef = "ngModel"
-                (keydown.enter)="onEnterPress2()">                  
-            </div>                                   
-        </div> 
-        <div class="row ml-2 mr-2 mt-2">    
-            <div class="col-md-6">
+                #localidad="ngModel">              
+            </div>          
+            <div class="col-md-3">
                 <label class="text-primary">Tipo contribuyente</label>
                 <select #contribuyenteSelect
                 class="form-control"
@@ -121,12 +180,13 @@
                 required="required"
                 [(ngModel)]="proveedor.id_tipo_cont"
                 (change)="onContribuyenteSelectChange()"
+                #tipoContr ="ngModel"
                 onchange="this.classList.add('option-selected')"> <!-- Agrega la clase 'option-selected' al select -->                 
                   <option *ngFor="let tipoCont of tipoContrib"  [value]=" tipoCont.id_tipoCont">{{  tipoCont.tipo_contribuyente }}</option>                  
                 </select> 
                 <span class="invalid" id="requiredMessage">*</span> <!-- Agrega un ID al elemento span -->                                       
-            </div>
-            <div class="col-md-6">
+            </div> 
+            <div class="col-md-3">
                 <label class="text-primary">Cuit</label>
                 <input #cuitInput
                 type="text"               
@@ -141,44 +201,69 @@
                 #cuit = "ngModel"
                 (keydown.enter)="onEnterPress3()"> 
                  <span class="invalid">*</span>              
-            </div>         
+            </div>                           
         </div> 
-        <div class="row ml-2 mr-2 mt-2 mb-5">
-            <div class="col-md-6">
+        <div class="row ml-2 mr-2 mt-2">
+            <div class="col-md-3">
                 <label for="tipoProveedor" class="text-primary">Tipo de proveedor</label>
                 <select #tipoProveedorSelect
                 class="form-control
                 custom-select"
                 id="tipoProveedor"
                 [(ngModel)]="proveedor.tipoProveedor"
-                (keydown.enter)="onEnterPress4()"                               
-                name="tipoProveedor">
+                (change)="ontipoProveedorChange()"                               
+                name="tipoProveedor"
+                #tipoProv="ngModel">
                     <option value="Contado">Contado</option>
                     <option value="Credito">Crédito</option>
                 </select>
-            </div>
-            <div class="col-md-6">
+            </div>                           
+            <div class="col-md-3">
                 <label for="estado" class="text-primary">Status</label>
                 <select #statusSelect
                 class="form-control custom-select"
                 id="status"
                 [(ngModel)]="proveedor.estado"
-                name="status">
+                (change)="onStatusChange()"
+                name="status"
+                #status = "ngModel">
                     <option value="activo">Activo</option>
                     <option value="desactivo">Desactivo</option>
                 </select>
             </div> 
-        </div>                
-        <div class="row ml-2 mr-2 mt-2">            
-            <div class="col-md-6">                          
-            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Telefono</label>
+                <input #telefonoInput 
+                type="text"               
+                class="form-control" 
+                id="telefono" 
+                [(ngModel)]="proveedor.telefono"
+                (keydown.enter)="onEnter($event, notaInput)"
+                name="telefono"            
+                minlength="7"
+                maxlength="15"
+                placeholder=""
+                #telef = "ngModel">                  
+            </div> 
+                 
         </div> 
+        <div class="row ml-2 mr-2 mt-2 mb-5">         
+            <div class="col-md-12">
+                <label  class="text-primary">Nota</label>
+                <input #notaInput
+                class="form-control"
+                id="nota"
+                [(ngModel)]="proveedor.nota"
+                name="nota"
+                maxlength="100"
+                #notas = "ngModel">
+            </div> 
+        </div>                        
     </fieldset>
-        <div class="container mt-2 border-top border-primary">
-            <div class="mt-4 mb-0 " align="center ">
-                <button type="submit" class="btn custom-button btn-guardar" [disabled]="!proveedorForm.form.valid">Guardar</button>
-                <button class="btn custom-button btn-salir" type=""  (click)=" irAlaListaProveedores()">Salir</button>
-            </div>
+</form>        
+        <div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">      
+            <button type="submit" class="btn btn-sm btn-outline-warning text-while mt-3" type="button"  [disabled]="!proveedorForm.form.valid">Guardar</button>            
+            <button class="btn btn-sm btn-outline-warning text-while mt-3"  type="button" (click)=" irAlaListaProveedores()">Salir</button>        
         </div>                                                            
-    </form>
+
     

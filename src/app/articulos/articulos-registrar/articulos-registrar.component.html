@@ -1,4 +1,4 @@
-<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
     <div class="row">       
         <div class="input-group col-12 col-md-6 mt-1">                      
             <div class=" input-group-append">   
@@ -7,133 +7,142 @@
         </div> 
     </div>
 </div> 
-<form novalidate (ngSubmit)="onSubmit()" #clienteForm="ngForm" class="border border-primary mt-2" >
-    <div class="row mt-5 ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Descripcion</label>
-            <input class="form-control"
-            type="text"
-            name="descripcion"
-            required="required"
-            minlength="3"
-            maxlength="50"
-            [(ngModel)]="articulos.descripcion"
-            (keypress)="onEnter($event, presentInput)"/>
-            <span class="invalid">*Requerido</span>
-        </div>
-        <div class="col-md-6">
-            <label class="text-primary">Presentacion</label>
-            <input #presentInput
-            class="form-control"
-            type="text"
-            name="present"
-            required="required"
-            minlength="3"
-            maxlength="50"
-            [(ngModel)]="articulos.presentacion"
-            (keydown.enter)="onEnterPress2()"/>
-            <span class="invalid">*Requerido</span>
-        </div>
-    </div>    
-    <div class="row mt-2 ml-2 mr-2">
-        <div class="col-md-3">
-            <label class="text-primary">Unidad de Venta</label>
-            <select #unidadSelect
-            class="form-control"
-            type="number"
-            name="unidad"
-            required="required"           
-            [(ngModel)]="articulos.unidadVenta"         
-            (change)="onUnidadSelectChange()">
-            <option *ngFor="let unidad of unidad" style="font-size: 12px;" [value]="unidad.idUnidad">{{ unidad.nombre }}</option>
+<form  #clienteForm="ngForm"  class="border-double border-primary mt-2" >
+    <fieldset class="mt-1">
+        <legend>Datos Del Articulo</legend>
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-6">
+                <label class="text-primary">Descripcion</label>
+                <input class="form-control"
+                type="text"
+                name="descripcion"
+                required="required"
+                minlength="3"
+                maxlength="50"
+                [(ngModel)]="articulos.descripcion"
+                (keypress)="onEnter($event, presentInput)"/>               
+            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Presentacion</label>
+                <input #presentInput
+                class="form-control"
+                type="text"
+                name="present"
+                required=""
+                minlength="3"
+                maxlength="50"
+                [(ngModel)]="articulos.presentacion"
+                (keypress)="onEnter($event, barraInput)" />                
+            </div>
+        </div>    
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-3">
+                <label class="text-primary">Codigo de Barra</label>
+                <input #barraInput
+                class="form-control"
+                type="text"
+                name="barra"
+                required=""
+                minlength=""
+                maxlength="13"
+                [(ngModel)]="articulos.barra"
+                (keypress)="onEnter($event, codigoInput)"/>               
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Codigo Articulo</label>
+                <input #codigoInput
+                  class="form-control"
+                  type="text"
+                  name="codigo"
+                  required=""
+                  minlength=""
+                  maxlength="10"
+                  [(ngModel)]="articulos.codigo"
+                  (ngModelChange)="formatCodigo($event)"
+                  (keydown.enter)="irMarcas()"/>                
+              </div>
+              <div class="col-md-3">
+                <label class="text-primary">Marca</label>
+                <select #marcasSelect
+                class="form-control"
+                type="number"
+                name="marca"
+                [(ngModel)]="articulos.idMarca"            
+                (change)="onMarcaSelectChange()">
+                <option *ngFor="let marca of marcas" style="font-size: 12px;" [value]="marca.idMarca">{{ marca.nombre }}</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Rubro</label>
+                <select #rubroSelect
+                class="form-control"
+                type="number"
+                name="rubro"
+                [(ngModel)]="articulos.idRubro"
+                (change)="onRubroSelectChange()">
+                <option *ngFor="let rubro of rubros" style="font-size: 12px;" [value]=" rubro.idRubro">{{ rubro.nombre }}</option>
             </select>
-            <span class="invalid">*Requerido</span>
+            </div>                                        
         </div>
-        <div class="col-md-3">
-            <label class="text-primary">Codigo Articulo</label>
-            <input #codigoInput
-              class="form-control"
-              type="text"
-              name="codigo"
-              required="required"
-              minlength="7"
-              maxlength="7"
-              [(ngModel)]="articulos.codigo"
-              (ngModelChange)="formatCodigo($event)"
-              (keypress)="onEnter($event, barraInput)"/>
-            <span class="invalid">*Requerido</span>
-          </div>
-          
-        <div class="col-md-3">
-            <label class="text-primary">Codigo de Barra</label>
-            <input #barraInput
-            class="form-control"
-            type="number"
-            name="barra"
-            required="required"
-            minlength="3"
-            maxlength="14"
-            [(ngModel)]="articulos.barra"
-            (keydown.enter)="onEnterPress()"/>
-            <span class="invalid">*Requerido</span>
-        </div>
-        <div class="col-md-3">
-            <label class="text-primary">Marca</label>
-            <select #marcasSelect
-            class="form-control"
-            type="number"
-            name="marca"
-            [(ngModel)]="articulos.idMarca"            
-            (change)="onMarcaSelectChange()">
-            <option *ngFor="let marca of marcas" style="font-size: 12px;" [value]="marca.idMarca">{{ marca.nombre }}</option>
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-6">
+                <label class="text-primary">Proveedor</label>
+                <select #proveedorSelect
+                class="form-control"
+                type="number"
+                name="proveedor"
+                [(ngModel)]="articulos.idProveedor"
+                (change)="onProveedorSelectChange()">
+                <option *ngFor="let proveedor of proveedores" style="font-size: 12px;" [value]=" proveedor.id_proveedor">{{ proveedor.razonSocial }}</option>
             </select>
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Unidad de Venta</label>
+                <select #unidadSelect
+                class="form-control"
+                type="number"
+                name="unidad"
+                required=""           
+                [(ngModel)]="articulos.unidadVenta"         
+                (change)="onUnidadSelectChange()">
+                <option *ngFor="let unidad of unidad" style="font-size: 12px;" [value]="unidad.idUnidad">{{ unidad.nombre }}</option>
+                </select>               
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Stock Minimo</label>
+                <input #stockMinimoInput
+                class="form-control"
+                type="number"
+                name="stockMinimo"
+                maxlength="5"
+                [(ngModel)]="articulos.puntoPedido"
+                (keypress)="onEnter($event, costoInput)" />
+            </div>                       
         </div>
-    </div>
+    </fieldset>
+    <fieldset>
+        <legend>Datos Financieros</legend>       
     <div class="row mt-2 ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Proveedor</label>
-            <select #proveedorSelect
-            class="form-control"
-            type="number"
-            name="proveedor"
-            [(ngModel)]="articulos.idProveedor"
-            (change)="onProveedorSelectChange()">
-            <option *ngFor="let proveedor of proveedores" style="font-size: 12px;" [value]=" proveedor.id_proveedor">{{ proveedor.razonSocial }}</option>
-        </select>
-        </div>
-        <div class="col-md-6">
-            <label class="text-primary">Rubro</label>
-            <select #rubroSelect
-            class="form-control"
-            type="number"
-            name="rubro"
-            [(ngModel)]="articulos.idRubro"
-            (change)="onRubroSelectChange()">
-            <option *ngFor="let rubro of rubros" style="font-size: 12px;" [value]=" rubro.idRubro">{{ rubro.nombre }}</option>
-        </select>
-        </div>
-      
-    </div>
-    <div class="row mt-2 ml-2 mr-2">      
         <div class="col-md-3">
             <label class="text-primary">Costo</label>
-            <input #precioInput
+            <input #costoInput
             class="form-control"
             type="number"
-            name="pcompra"
+            name="costo"
+            maxlength="14"
             [(ngModel)]="articulos.precioCompra"
             (keypress)="onEnter($event, margenInput)" />
-        </div>
+        </div>              
         <div class="col-md-3">
             <label class="text-primary">Margen de utilidad</label>
             <input #margenInput
             class="form-control"
             type="number"
             name="margen"
+            maxlength="8"
             (keyup)="calcularMargen()"
             [(ngModel)]="articulos.margen"           
-            (keypress)="onEnter($event, precioSinIvaInput)"
-            />
+            (keypress)="onEnter($event, precioSinIvaInput)"/>
         </div>
         <div class="col-md-3">
             <label class="text-primary">Precio</label>
@@ -141,6 +150,7 @@
             class="form-control"
             type="number"
             name="pSinIva"
+            maxlength="17"
             (keyup)="calcularPorcentajeUtilidad()"
             [(ngModel)]="articulos.precioVenta"
             (keypress)="onEnter($event, IvaInput)"
@@ -153,61 +163,96 @@
             type="number" 
             readonly           
             name="iva"
+            maxlength="8"
             [(ngModel)]="articulos.iva"
             (keyup)="calcularPrecioConIva()"
-            (keypress)="onEnter($event, precioVentaInput)" />
-        </div>
-    </div>   
+            (keypress)="onEnter($event, otroImpuestoInput)" />
+        </div>    
+    </div> 
     <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-3">
+            <label class="text-primary">Otro Impuesto</label>
+            <input #otroImpuestoInput
+            class="form-control"            
+            type="number" 
+            readonly           
+            name="otroImpuesto"
+            maxlength="8"
+            [(ngModel)]="articulos.otroImpuesto"
+            (keyup)="calcularPrecioConIva()"
+            (keypress)="onEnter($event, precioVentaInput)" />
+        </div>      
         <div class="col-md-3">
             <label class="text-primary">Precio Venta</label>
             <input #precioVentaInput
             class="form-control"
             type="number"
             name="pventa"
-            required="required"
+            required=""
+            maxlength="17"
             [(ngModel)]="articulos.precioVentaIva"           
             (keypress)="onEnter($event, porcentajeInput)"/>
-            <span class="invalid">*Requerido</span>
-        </div>
+        </div>                            
+    </div> 
+</fieldset>
+<fieldset>
+    <legend>Datos Para Ofertas</legend>
+    <div class="row mt-2 ml-2 mr-2">      
         <div class="col-md-3">
             <label class="text-primary">Porcentaje Descuento</label>
             <input #porcentajeInput
             class="form-control"
             type="number"
             name="descuento"
+            maxlength="8"
             (keyup)="calcularPorcentajeDescuento()"
             [(ngModel)]="articulos.porcentajeDescuento"
             (keypress)="onEnter($event, pventaOfertaInput)" />
         </div>            
-        <div class="col-md-3">
+            <div class="col-md-3">
             <label class="text-primary">Precio oferta</label>
             <input #pventaOfertaInput
             class="form-control"
             type="number"
             name="oferta"
+            maxlength="17"
             [(ngModel)]="articulos.precioOferta"
-            (keypress)="onEnter($event, puntoInput)" />
-        </div>
-        <div class="col-md-3">
-            <label class="text-primary">Punto de pedido</label>
-            <input #puntoInput
-            class="form-control"
-            type="number"
-            name="pedido"
-            [(ngModel)]="articulos.puntoPedido"
              />
+        </div>  
+        <div class="col-md-3" style="display: flex; flex-direction: column;">
+            <label class="text-primary">Desde</label>
+            <div  style="display: flex; align-items: center;">
+                <input 
+                name="fechaDesde"
+                 class="form-control mb-2"
+                 matInput [matDatepicker]="picker"
+                 [(ngModel)]="articulos.fechaDesde">               
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>              
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
         </div>
-    </div>          
-    <br />
-    <div class="container mt-5 border-top border-primary">
-        <div class="mt-5 mb-5" align="center">
-            <button type="submit" class="btn btn-sm custom-button btn-guardar" [disabled]="!clienteForm.form.valid">Guardar</button>
-            <button class="btn btn-sm custom-button btn-salir" (click)="irAlaListaArticulos()">Salir</button>
-            <button class="btn btn-sm custom-button btn-limpiar" type="button" (click)="limpiar()">Limpiar</button>
-        </div>
-    </div>
-    
+        <div class="col-md-3" style="display: flex; flex-direction: column;">
+            <label class="text-primary">Hasta</label>
+            <div  style="display: flex; align-items: center;">
+                <input 
+                 name="fechaHasta"
+                 class="form-control mb-2"
+                 matInput [matDatepicker]="picker1"
+                 [(ngModel)]="articulos.fechaHasta">               
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>              
+                <mat-datepicker #picker1></mat-datepicker>
+            </div>
+        </div>                                                
+    </div>  
+</fieldset>
 </form>
+<div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">      
+    <button class="btn btn-sm btn-outline-warning text-while mt-3" (click)="guardar()">Guardar</button>
+    <button class="btn btn-sm btn-outline-warning text-while mt-3" (click)="irAlaListaArticulos()">Salir</button>
+    <button class="btn btn-sm btn-outline-warning text-while mt-3" type="button" (click)="limpiar()">Limpiar</button>
+</div>
+  
+
+
 
 

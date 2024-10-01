@@ -8,7 +8,10 @@ import { ProvinciasService } from '../provincias.service';
 import { TipoContrib} from '../tipoContribuy';
 import { TipoContribService } from '../../clientes/tipo-contrib.service';
 import { ViewChild, ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActulizarDialogComponent } from './actualizar-dialog.component'; // Asegúrate de poner la ruta correcta
 
+ 
 @Component({
   selector: 'app-proveedores-actualizar',
   templateUrl: './proveedores-actualizar.component.html',
@@ -18,9 +21,8 @@ export class ProveedoresActualizarComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private proveedorService:ProveedoresService,private router:Router,
     private provinciaService:ProvinciasService,
-    private tipoContServcice:TipoContribService){
-    
-  }
+    private tipoContServcice:TipoContribService,
+    public dialog: MatDialog){}
 
   id_proveedor:number;
   proveedor : Proveedores = new Proveedores;
@@ -44,14 +46,26 @@ export class ProveedoresActualizarComponent implements OnInit {
       else{ 
       }
 
-    }); 
+    });  
   }
-
+ 
   onSubmit(){
+
    this. actualizarProveedor();
    this.proveedorService.actualizarProveedor(this.id_proveedor,this.proveedor).subscribe(data=> {
       console.log(data);
-      this.router.navigate(['/proveedores']);
+      const dialogRef = this.dialog.open(ActulizarDialogComponent, {
+        width: '400px',
+        data: {},
+        position: {top: '50',left: '50%' },
+        panelClass: 'my-dialog'
+      });
+  
+      // Navegar a la lista de clientes después de cerrar el diálogo
+      dialogRef.afterClosed().subscribe(() => {
+        this.router.navigate(['/clientes']);
+      });
+     
     },
     (error) => {
       console.error(error);
@@ -95,11 +109,31 @@ irAlSiguiente(event: any, nextInput: HTMLInputElement) {
     nextInput.focus();
   }
 }
-@ViewChild('localidad') localidad: ElementRef;
+onEnter(event: any, nextInput: HTMLInputElement) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Evitar el comportamiento por defecto del Enter en un formulario (submit)
+    nextInput.focus();
+  }
+}
+@ViewChild('contribuyenteSelect') contribuyenteSelect: ElementRef;
+
+// Función que se ejecuta cuando se presiona Enter en el input #localidadInput
+onEnterPress2() {
+  // Enfoca el select #provinciaSelect
+  this.contribuyenteSelect.nativeElement.focus();
+}
+@ViewChild('cuitInput') cuitInput: ElementRef;
+
+  onContribuyenteSelectChange() {
+    // Enfoca el input #telefonoInput
+    this.cuitInput.nativeElement.focus();
+  }
+
+  @ViewChild('localidadInput') localidadInput: ElementRef;
 
   onProvinciaSelectChange() {
     // Enfoca el input #telefonoInput
-    this.localidad.nativeElement.focus();
+    this.localidadInput.nativeElement.focus();
   }
 
     // ViewChild para obtener una referencia al elemento del DOM
@@ -118,23 +152,29 @@ irAlSiguiente(event: any, nextInput: HTMLInputElement) {
        // Enfoca el select #provinciaSelect
        this.tipoContSelect.nativeElement.focus();
      }
-     @ViewChild('cuitInput') cuitInput: ElementRef;
+     @ViewChild('telefonoInput') telefonoInput: ElementRef;
+     onStatusChange() {
+      // Enfoca el input #telefonoInput
+      this.telefonoInput.nativeElement.focus();
+        }
+    @ViewChild('tipoProveSelect') tipoProveSelect: ElementRef;
 
-     onTipoContr() {
+    onCambioStatus() {
     // Enfoca el input #telefonoInput
-    this.cuitInput.nativeElement.focus();
-  }
-  @ViewChild('statusSelect') statusSelect: ElementRef;
+    this.tipoProveSelect.nativeElement.focus();
+    }
+    @ViewChild('statusSelect') statusSelect: ElementRef;
 
-  onStatus() {
- // Enfoca el input #telefonoInput
- this.statusSelect.nativeElement.focus();
-}
-@ViewChild('tipoProveSelect') tipoProveSelect: ElementRef;
+    ontipoProveedorChange() {
+      // Enfoca el input #telefonoInput
+      this.statusSelect.nativeElement.focus();
+    }
+    @ViewChild('tipoProveedorSelect') tipoProveedorSelect: ElementRef;
 
-onCambioStatus() {
-// Enfoca el input #telefonoInput
-this.tipoProveSelect.nativeElement.focus();
-}
+    // Función que se ejecuta cuando se presiona Enter en el input #localidadInput
+    onEnterPress3() {
+      // Enfoca el select #provinciaSelect
+      this.tipoProveedorSelect.nativeElement.focus();
+    }
 
 }

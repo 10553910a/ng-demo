@@ -1,75 +1,110 @@
-<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
-    <div class="row">       
-        <div class="input-group col-12 col-md-6 mt-1">                      
-            <div class=" input-group-append">   
-                <h4 class="text-center  text-warning mt-3">Detalles de Proveedores</h4>               				  				
-            </div>	
-        </div> 
-    </div>
-</div>
-<div class="form novalidate border border-primary mt-2" style="border-width: 4px; border-style: double;">
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Id</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.id_proveedor" placeholder="">
-        </div>
-        <div class="col-md-6">
-            <label class="text-primary">Nombre o Razon Social</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.razonSocial" placeholder="">
-        </div>
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Contacto</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.contacto" placeholder="">
-        </div>
-        <div class="col-md-6">
-            <label class="text-primary">Direccion</label>
-           <input class="form-control" type="text" [(ngModel)]="proveedor.direccion" placeholder="">
-        </div>
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Provincia</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.provincia" placeholder="">
-        </div>
-        <div class="col-md-6">
-            <label class="text-primary">Localidad</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.localidad" placeholder="">
-        </div> 
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Telefono</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.telefono" placeholder="">
-        </div>
-        <div class="col-md-6">
-            <label class="text-primary">Tipo Contribuyente</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.id_tipo_cont" placeholder="">
-        </div>
+<div class="container mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); min-height: 60px;">
+    <div class="row">
+      <div class="input-group-append col-md-6 mt-3">
+        <h4 class="text-center text-warning">Detalles Del Proveedor</h4>
+      </div>
+      <div class="col-md-3 mt-3">
+        <button class="btn btn-sm btn-outline-warning text-white">Exportar a PDF</button>
+      </div>
+      <div class="col-md-3 mt-3">
+        <button (click)="actualizarProveedor(proveedor.id_proveedor)" class="btn btn-sm btn-outline-warning text-white">Editar Proveedor</button>
+      </div>
     </div> 
-    <div class="row mt-3 form-group ml-2 mr-2">   
+  </div>
+  <form class="border-double border-primary mt-2">
+    <fieldset class="mt-2">
+      <legend>Datos Del Contacto</legend>
+      <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-3">
+          <label class="text-primary">Persona de contacto</label>
+          <input type="text" class="form-control" id="nombreContacto" [(ngModel)]="proveedor.contacto" name="nombreContacto" readonly>
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">Cuit de Contacto</label>
+          <input type="text" class="form-control" id="cuitContacto" [(ngModel)]="proveedor.cuil_contacto" name="cuitContacto" readonly>
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">DNI de Contacto</label>
+          <input type="text" class="form-control" id="dniContacto" [(ngModel)]="proveedor.dni_proveedor" name="dniContacto" readonly>
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">Teléfono</label>
+          <input type="text" class="form-control" id="telefonoContacto" [(ngModel)]="proveedor.telefono_contacto" name="telefonoContacto" readonly>
+        </div>
+      </div>
+      <div class="row mt-2 ml-2 mr-2">
         <div class="col-md-6">
-            <label class="text-primary">Cuit</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.cuit" placeholder="">
+          <label class="text-primary">Dirección</label>
+          <input type="text" class="form-control" id="direccionContacto" [(ngModel)]="proveedor.direccion_contacto" name="direccionContacto"readonly>
         </div>
         <div class="col-md-6">
-            <label class="text-primary">Estado</label>
-             <input class="form-control" type="text" [(ngModel)]="proveedor.estado" placeholder="">
+          <label class="text-primary">Email</label>
+          <input type="email" class="form-control" id="emailContacto" [(ngModel)]="proveedor.email_contacto" name="emailContacto" required minlength="3" maxlength="50">
         </div>
-    </div> 
-    <div class="row mt-3 form-group ml-2 mr-2">    
+      </div>
+    </fieldset>
+  
+    <fieldset>
+      <legend>Datos de la Empresa</legend>
+      <div class="row ml-2 mr-2 mt-2">
         <div class="col-md-6">
-            <label class="text-primary">Tipo Proveedor</label>
-            <input class="form-control" type="text" [(ngModel)]="proveedor.tipoProveedor " placeholder="">
+          <label class="text-primary">Razón Social</label>
+          <input type="text" class="form-control" id="razonSocial" [(ngModel)]="proveedor.razonSocial" name="razonSocial"readonly>
         </div>
+        <div class="col-md-6">
+          <label class="text-primary">Dirección</label>
+          <input type="text" class="form-control" id="direccionEmpresa" [(ngModel)]="proveedor.direccion" name="direccionEmpresa"readonly>
+        </div>
+      </div>
+      <div class="row ml-2 mr-2 mt-2">
+        <div class="col-md-3">
+          <label class="text-primary">Provincia</label>
+          <input type="text" class="form-control" id="provincia" [(ngModel)]="proveedor.provincia" name="provincia">
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">Localidad</label>
+          <input type="text" class="form-control" id="localidad" [(ngModel)]="proveedor.localidad" name="localidad" readonly>
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">Tipo contribuyente</label>
+          <input type="text" class="form-control" id="tipoContribuyente" [(ngModel)]="proveedor.id_tipo_cont" name="tipoContribuyente" readonly>
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">Cuit</label>
+          <input type="text" class="form-control" id="cuit" [(ngModel)]="proveedor.cuit" name="cuit" readonly>
+        </div>
+      </div>
+      <div class="row ml-2 mr-2 mt-2">
+        <div class="col-md-3">
+          <label class="text-primary">Tipo de proveedor</label>
+          <select class="form-control custom-select" id="tipoProveedor" [(ngModel)]="proveedor.tipoProveedor" readonly>
+            <option value="Contado">Contado</option>
+            <option value="Credito">Crédito</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="text-primary">Status</label>
+          <select class="form-control custom-select" id="status" [(ngModel)]="proveedor.estado" name="status" readonly>
+            <option value="activo">Activo</option>
+            <option value="desactivo">Desactivo</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="text-primary">Teléfono</label>
+          <input type="text" class="form-control" id="telefonoEmpresa" [(ngModel)]="proveedor.telefono" name="telefono" readonly>
+        </div>
+      </div>
+      <div class="row ml-2 mr-2 mt-2 mb-5">
+        <div class="col-md-12">
+          <label class="text-primary">Nota</label>
+          <input type="text" class="form-control" id="nota" [(ngModel)]="proveedor.nota" name="nota" readonly>
+        </div>
+      </div>
+    </fieldset>
+  </form>   
+      <div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">      
+        <button class="btn btn-primary mt-2" (click)="onSubmit()" type="button">Retornar a la lista de Proveedores</button>     
     </div>
-    <div class="container mt-2 border-top border-primary">
-        <div class="text-center mt-5 mb-5">
-            <button class="btn btn-primary" (click)="onSubmit()" type="button">Retornar a la lista de Proveedores</button>
-        </div>
-    </div>
-    
-    
-</div>
+  
+  
 

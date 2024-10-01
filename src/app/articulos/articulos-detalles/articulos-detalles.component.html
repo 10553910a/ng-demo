@@ -1,142 +1,231 @@
-<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
+<div class="container  mt-4 ml-0" style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%); min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">
     <div class="row">       
         <div class="input-group col-12 col-md-6 mt-1">                      
             <div class=" input-group-append">   
-                <h4 class="text-center  text-warning mt-3">Detalles del Articulos</h4>               				  				
+                <h4 class="text-center  text-warning mt-3">Detalles De Articulos</h4>               				  				
             </div>	
         </div> 
     </div>
-</div>
-<div class="form novalidate border border-primary mt-2">
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Id Articulo</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.idArticulo"           
-            readonly >
+</div> 
+<form  #clienteForm="ngForm"  class="border-double border-primary mt-2" >
+    <fieldset class="mt-1">
+        <legend>Datos Del Articulo</legend>
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-6">
+                <label class="text-primary">Descripcion</label>
+                <input class="form-control"
+                type="text"
+                name="descripcion"
+                [(ngModel)]="articulos.descripcion"
+                minlength="3"
+                maxlength="50"/>               
+            </div>
+            <div class="col-md-6">
+                <label class="text-primary">Presentacion</label>
+                <input #presentInput
+                class="form-control"
+                type="text"
+                name="present"
+                [(ngModel)]="articulos.presentacion"
+                required=""
+                minlength="3"
+                maxlength="50"/>                
+            </div>
+        </div>    
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-3">
+                <label class="text-primary">Codigo de Barra</label>
+                <input #barraInput
+                class="form-control"
+                type="text"
+                name="barra"
+                [(ngModel)]="articulos.barra"
+                required=""
+                minlength=""
+                maxlength="13"/>                              
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Codigo Articulo</label>
+                <input #codigoInput
+                  class="form-control"
+                  type="text"
+                  name="codigo"
+                  [(ngModel)]="articulos.codigo"
+                  required=""
+                  minlength=""
+                  maxlength="10"/>                
+              </div>
+              <div class="col-md-3">
+                <label class="text-primary">Marca</label>
+                <input
+                #marcasSelect
+                class="form-control"
+                type="number"
+                name="marca"
+                [(ngModel)]="articulos.idMarca"/>                                
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Rubro</label>
+                <input #rubroSelect
+                class="form-control"
+                type="number"
+                name="rubro"
+                [(ngModel)]="articulos.idRubro"/>                          
+            </div>                                        
         </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Descripcion</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.descripcion"
-            readonly >
-       </div>             
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Presentacion</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.presentacion"           
-            readonly >
+        <div class="row mt-2 ml-2 mr-2">
+            <div class="col-md-6">
+                <label class="text-primary">Proveedor</label>
+                <input
+                 #proveedorSelect
+                class="form-control"
+                type="number"
+                name="proveedor"
+                [(ngModel)]="articulos.idProveedor"/>                           
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Unidad de Venta</label>
+                <input
+                #unidadSelect
+                class="form-control"
+                type="number"
+                name="unidad"
+                required=""
+                [(ngModel)]="articulos.unidadVenta"/>                                             
+            </div>
+            <div class="col-md-3">
+                <label class="text-primary">Stock Minimo</label>
+                <input #stockMinimoInput
+                class="form-control"
+                type="number"
+                name="stockMinimo"
+                [(ngModel)]="articulos.puntoPedido"
+                maxlength="5"/>
+            </div>                       
         </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Codigo</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.codigo"
-            readonly >
-       </div>             
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Codigo de Barra</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.barra"           
-            readonly >
-        </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Marca</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.idMarca"
-            readonly >
-        </div>
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Proveedor</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.idProveedor"           
-            readonly >
-        </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Rubro</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.idRubro"
-            readonly >
-        </div>
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
+    </fieldset>
+    <fieldset>
+        <legend>Datos Financieros</legend>       
+    <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-3">
             <label class="text-primary">Costo</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.precioCompra"           
-            readonly >
-        </div>
-        <div class="col-md-6">
+            <input #costoInput
+            class="form-control"
+            type="number"
+            name="costo"
+            [(ngModel)]="articulos.precioCompra"
+            maxlength="14"/>
+        </div>              
+        <div class="col-md-3">
             <label class="text-primary">Margen de utilidad</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.margen"           
-            readonly >
-        </div>        
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div div class="col-md-6">
+            <input #margenInput
+            class="form-control"
+            type="number"
+            name="margen"
+            [(ngModel)]="articulos.margen"
+            maxlength="8">                                           
+        </div>
+        <div class="col-md-3">
             <label class="text-primary">Precio</label>
-            <input class="form-control"
-            type="text"
+            <input #precioSinIvaInput
+            class="form-control"
+            type="number"
+            name="pSinIva"
             [(ngModel)]="articulos.precioVenta"
-            readonly >
-        </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Precio Oferta</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.precioOferta"
-            readonly >
-        </div>
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Descuento %</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.porcentajeDescuento"           
-            readonly >
-        </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Precio Oferta</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.precioOferta"
-            readonly >
-        </div>
-    </div>
-    <div class="row mt-3 form-group ml-2 mr-2">
-        <div class="col-md-6">
-            <label class="text-primary">Punto de pedido</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.puntoPedido"           
-            readonly >
-        </div>
-        <div div class="col-md-6">
-            <label class="text-primary">Vigencia Oferta</label>
-            <input class="form-control"
-            type="text"
-            [(ngModel)]="articulos.iva"
-            readonly >
-        </div>
-    </div>
-    <div class="col-md-12 text-center mt-5">
-        <button class="btn btn-primary mb-5" type="button" (click)="onSubmit()">Retornar a la lista de articulos</button>
+            maxlength="17"/>
+        </div> 
+        <div class="col-md-3">
+            <label class="text-primary">Iva</label>
+            <input #IvaInput
+            class="form-control"            
+            type="number"
+            [(ngModel)]="articulos.iva" 
+            readonly           
+            name="iva"
+            maxlength="8"/>
+        </div>    
     </div> 
+    <div class="row mt-2 ml-2 mr-2">
+        <div class="col-md-3">
+            <label class="text-primary">Otro Impuesto</label>
+            <input #otroImpuestoInput
+            class="form-control"            
+            type="number" 
+            [(ngModel)]="articulos.otroImpuesto"
+            readonly           
+            name="otroImpuesto"
+            maxlength="8"/>
+        </div>      
+        <div class="col-md-3">
+            <label class="text-primary">Precio Venta</label>
+            <input #precioVentaInput
+            class="form-control"
+            type="number"
+            name="pventa"
+            [(ngModel)]="articulos.precioVentaIva" 
+            readonly
+            required=""
+            maxlength="17"/>
+        </div>                            
+    </div> 
+</fieldset>
+<fieldset>
+    <legend>Datos Para Ofertas</legend>
+    <div class="row mt-2 ml-2 mr-2">      
+        <div class="col-md-3">
+            <label class="text-primary">Porcentaje Descuento</label>
+            <input #porcentajeInput
+            class="form-control"
+            type="number"
+            name="descuento"
+            [(ngModel)]="articulos.porcentajeDescuento" 
+            readonly
+            maxlength="8"/>
+        </div>            
+            <div class="col-md-3">
+            <label class="text-primary">Precio oferta</label>
+            <input #pventaOfertaInput
+            class="form-control"
+            type="number"
+            [(ngModel)]="articulos.precioOferta" 
+            readonly
+            name="oferta"
+            maxlength="17"/>
+        </div>  
+        <div class="col-md-3" style="display: flex; flex-direction: column;">
+            <label class="text-primary">Desde</label>
+            <div  style="display: flex; align-items: center;">
+                <input 
+                name="fechaDesde"
+                [(ngModel)]="articulos.fechaDesde" 
+                readonly
+                 class="form-control mb-2"
+                 matInput [matDatepicker]="picker">               
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>              
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+        </div>
+        <div class="col-md-3" style="display: flex; flex-direction: column;">
+            <label class="text-primary">Hasta</label>
+            <div  style="display: flex; align-items: center;">
+                <input 
+                name="fechaHasta"
+                [(ngModel)]="articulos.fechaHasta" 
+                readonly
+                 class="form-control mb-2"
+                 matInput [matDatepicker]="picker1">               
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>              
+                <mat-datepicker #picker1></mat-datepicker>
+            </div>
+        </div>                                                
+    </div>  
+</fieldset>
+</form>
+<div class="mt-2 " align="center"  style="background: linear-gradient(to bottom, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);min-height: 60px; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */">          
+    <button class="btn btn-sm btn-outline-warning text-while mt-3" (click)="irAlaListaArticulos()">Salir</button>   
 </div>
+  
+
+
+
+

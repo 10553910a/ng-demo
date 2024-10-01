@@ -77,7 +77,7 @@ export class ActualizarClientesComponent implements OnInit {
     
   }
 
-  onSubmit() {
+  editarClientes() {
     this.clientesService.actualizarCliente(this.id_cliente, this.clientes).subscribe(data => {
       console.log(data);
   

@@ -1,0 +1,12 @@
+.my-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(199, 206, 234);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0.9; /* Ajusta según tu preferencia */
+    width: auto; /* O ajusta a un tamaño específico */
+    max-width: 400px; /* Ajusta según el tamaño que necesites */
+    z-index: 1050; /* Asegúrate de que esté por encima de otros elementos */
+  } 

@@ -20,6 +20,16 @@ import { ArticulosRegistrarComponent } from './articulos/articulos-registrar/art
 import { ArticulosDetallesComponent } from './articulos/articulos-detalles/articulos-detalles.component';
 import { MantenimientoComponent } from './mantenimiento/mantenimiento.component';
 import { ArticulosEditarComponent } from './articulos/articulos-editar/articulos-editar.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { LOCALE_ID } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+
+
+
 
 
 @NgModule({
@@ -41,13 +51,22 @@ import { ArticulosEditarComponent } from './articulos/articulos-editar/articulos
     ArticulosEditarComponent
   ],
   imports: [
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
-  providers: [ClienteService],
+  providers: [ClienteService,
+    { provide: LOCALE_ID, useValue: 'es-ES' },
+  ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}

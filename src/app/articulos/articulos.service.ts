@@ -16,6 +16,7 @@ export class ArticulosService {
     return this.httpClient.get<Respuesta>(this.baseURL);    
  }
  registrarArticulos(articulos:Articulos){
+  console.log('Datos a enviar:', articulos);
   return this.httpClient.post<Respuesta>(this.baseURL,articulos);
  }
  eliminarArticulo(id_articulo:number){    

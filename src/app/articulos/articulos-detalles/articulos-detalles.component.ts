@@ -31,7 +31,7 @@ detallesArticulo(){
   }
 }); 
 }
-onSubmit(){    
+irAlaListaArticulos(){    
   this.router.navigate(['/articulos']);      
 }
 
